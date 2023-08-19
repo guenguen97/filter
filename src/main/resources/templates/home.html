@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form action="/" method="post">
+    <div>
+        <p>차량 크기</p>
+        <div>
+            <input type="checkbox" name="size" value="경차">
+            <label>경차</label>
+        </div>
+        <div>
+            <input type="checkbox" name="size" value="준중형">
+            <label>준중형</label>
+        </div>
+        <div>
+            <input type="checkbox" name="size" value="중형">
+            <label>중형</label>
+        </div>
+        <div>
+            <input type="checkbox" name="size" value="대형">
+            <label>대형</label>
+        </div>
+        <div>
+            <input type="checkbox" name="size" value="소형SUV">
+            <label>소형SUV</label>
+        </div>
+        <div>
+            <input type="checkbox" name="size" value="중형SUV">
+            <label>중형SUV</label>
+        </div>
+        <div>
+            <input type="checkbox" name="size" value="대형SUV">
+            <label>대형SUV</label>
+        </div>
+    </div>
+
+    <div>
+        <p>엔진</p>
+        <div>
+            <input type="checkbox" name="engine" value="가솔린">
+            <label>가솔린</label>
+        </div>
+        <div>
+            <input type="checkbox" name="engine" value="LPG">
+            <label>LPG</label>
+        </div>
+        <div>
+            <input type="checkbox" name="engine" value="하이브리드">
+            <label>하이브리드</label>
+        </div>
+        <div>
+            <input type="checkbox" name="engine" value="디젤">
+            <label>디젤</label>
+        </div>
+        <div>
+            <input type="checkbox" name="engine" value="전기차">
+            <label>전기차</label>
+        </div>
+    </div>
+
+    <div>
+        <p>배기량</p>
+        <div>
+            <input type="checkbox" name="displacement" value="1500">
+            <label>1500cc 이하</label>
+        </div>
+        <div>
+            <input type="checkbox" name="displacement" value="2500">
+            <label>2500cc 이하</label>
+        </div>
+        <div>
+            <input type="checkbox" name="displacement" value="3501">
+            <label>3500cc 이하</label>
+        </div>
+    </div>
+
+    <div>
+        <p>가격</p>
+        <div>
+            <input type="checkbox" name="maxPrice" value="1500">
+            <label>1500만원 이하</label>
+        </div>
+        <div>
+            <input type="checkbox" name="maxPrice" value="3000">
+            <label>3000만원 이하</label>
+        </div>
+        <div>
+            <input type="checkbox" name="maxPrice" value="4000">
+            <label>4000만원 이하</label>
+        </div>
+        <div>
+            <input type="checkbox" name="maxPrice" value="5000">
+            <label>5000만원 이하</label>
+        </div>
+        <div>
+            <input type="checkbox" name="maxPrice" value="6000">
+            <label>6000만원 이하</label>
+        </div>
+        <div>
+            <input type="checkbox" name="maxPrice" value="1000000">
+            <label>열라비싼거</label>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit"> 검색 </button>
+    </div>
+
+</form>
+
+<!--    <div>-->
+<!--        <table>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>#</th>-->
+<!--                <th>이름</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="article : ${articles}">-->
+<!--                <td th:text="${article.img_url}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+
+<div id="slider-container">
+    <div id="slider">
+        <tr th:each="car : ${cars}">
+            <div class="slide">
+                <img th:src="${car.imgUrl}">
+            </div>
+        </tr>
+    </div>
+</div>
+<button id="prevBtn">Previous</button>
+<button id="nextBtn">Next</button>
+
+
+</body>
+</html>
+
+<style>
+    body > form > div {
+  display : inline-block;
+  margin : 0 20px;
+}
+
+     #slider-container {
+    width: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+  #slider {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  .slide {
+    flex: 0 0 300px;
+  }
+  img {
+    width: 300px;
+    height: 200px;
+  }
+
+
+</style>
+
+<script>
+    const slider = document.getElementById("slider");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const slideWidth = 300; // Adjust to your image width
+
+  let currentSlide = 0;
+
+  prevBtn.addEventListener("click", () => {
+    currentSlide = Math.max(currentSlide - 1, 0);
+    updateSliderPosition();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = Math.min(currentSlide + 1, slider.children.length - 1);
+    updateSliderPosition();
+  });
+
+  function updateSliderPosition() {
+    const offset = -currentSlide * slideWidth;
+    slider.style.transform = `translateX(${offset}px)`;
+  }
+
+</script>
