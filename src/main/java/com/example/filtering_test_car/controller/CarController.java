@@ -3,6 +3,8 @@ package com.example.filtering_test_car.controller;
 
 import com.example.filtering_test_car.domain.Car;
 import com.example.filtering_test_car.service.CarService;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +42,10 @@ public class CarController {
 
         List<Car> cars = carService.getCarsBySearch(form.getSize(), form.getEngine(), form.getDisplacement(), form.getDistanceDriven(), form.getMaxPrice());
 
+        System.out.println(form.getSize());
+
         model.addAttribute("cars",cars);
+        System.out.println("데이터전송 성공");
 
         for(Car car : cars) {
             System.out.println(car.getId());

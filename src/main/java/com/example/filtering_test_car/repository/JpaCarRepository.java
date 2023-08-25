@@ -23,7 +23,7 @@ public class JpaCarRepository implements CarRepository{
     }
 
     @Override
-    public List<Car> getCarsBySearch(String size, String engine, Long displacement, Long distanceDriven, Long maxPrice) {
+    public List<Car> getCarsBySearch(List<String> size, String engine, Long displacement, Long distanceDriven, Long maxPrice) {
         return query
                 .selectFrom(qCar)
                 .where(eqSize(size),
@@ -34,9 +34,9 @@ public class JpaCarRepository implements CarRepository{
                 .fetch();
     }
 
-    private BooleanExpression eqSize(String size) {
+    private BooleanExpression eqSize(List<String> size) {
         if( size == null ) return null;
-        return qCar.size.eq(size);
+        return qCar.size.in(size);
     }
 
     private BooleanExpression ctEngine(String engine) {

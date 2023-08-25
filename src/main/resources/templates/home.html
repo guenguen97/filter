@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
-<form action="/" method="post">
+<form id="myForm" action="/" method="post">
     <div>
         <p>차량 크기</p>
         <div>
-            <input type="checkbox" name="size" value="경차">
+            <input id="option1"  type="checkbox" name="size" value="경차">
             <label>경차</label>
         </div>
         <div>
@@ -103,10 +104,43 @@
     </div>
 
     <div>
-        <button type="submit"> 검색 </button>
+        <button id="submitButton" type="submit"> 검색 </button>
     </div>
 
 </form>
+<script>
+    $(document).ready(function() {
+        $("#submitButton").click(function() {
+            const formData = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: formData,
+                success: function(response) {
+                    $("#response").html(response);
+                },
+                error: function(error) {
+                    console.error("Error sending data:", error);
+                }
+            });
+        });
+
+        $("input[type='checkbox']").change(function() {
+            const formData = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: formData,
+                success: function(response) {
+                    console.log("Checkbox data sent successfully");
+                },
+                error: function(error) {
+                    console.error("Error sending checkbox data:", error);
+                }
+            });
+        });
+    });
+</script>
 
 <!--    <div>-->
 <!--        <table>-->
@@ -188,5 +222,15 @@
     const offset = -currentSlide * slideWidth;
     slider.style.transform = `translateX(${offset}px)`;
   }
+
+   $(document).ready(function(){
+    $(checkbox).change(function(){
+        if($(checkbox).is(":checked")){
+            checkbox.submit();
+        }
+    });
+});
+
+
 
 </script>

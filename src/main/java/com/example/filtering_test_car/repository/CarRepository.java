@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CarRepository {
 
-    List<Car> getCarsBySearch(String size, String engine, Long displacement, Long distanceDriven, Long maxPrice);
+    List<Car> getCarsBySearch(List<String> size, String engine, Long displacement, Long distanceDriven, Long maxPrice);
 
 }

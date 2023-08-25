@@ -16,7 +16,8 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public List<Car> getCarsBySearch(String size, String engine, Long displacement, Long distanceDriven, Long maxPrice) {
+    public List<Car> getCarsBySearch(List<String> size, String engine, Long displacement, Long distanceDriven, Long maxPrice) {
         return carRepository.getCarsBySearch(size, engine, displacement, distanceDriven, maxPrice);
     }
+
 }
