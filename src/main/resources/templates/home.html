@@ -6,173 +6,262 @@
     <div>
         <p>차량 크기</p>
         <div>
-            <input id="option1"  type="checkbox" name="size" value="경차">
+            <input id="option1" type="checkbox" name="size" value="경차" >
             <label>경차</label>
         </div>
         <div>
-            <input type="checkbox" name="size" value="준중형">
+            <input type="checkbox" name="size" value="준중형" >
             <label>준중형</label>
         </div>
         <div>
-            <input type="checkbox" name="size" value="중형">
+            <input type="checkbox" name="size" value="중형" >
             <label>중형</label>
         </div>
         <div>
-            <input type="checkbox" name="size" value="대형">
+            <input type="checkbox" name="size" value="대형" >
             <label>대형</label>
         </div>
         <div>
-            <input type="checkbox" name="size" value="소형SUV">
+            <input type="checkbox" name="size" value="소형SUV" >
             <label>소형SUV</label>
         </div>
         <div>
-            <input type="checkbox" name="size" value="중형SUV">
+            <input type="checkbox" name="size" value="중형SUV" >
             <label>중형SUV</label>
         </div>
         <div>
-            <input type="checkbox" name="size" value="대형SUV">
+            <input type="checkbox" name="size" value="대형SUV" >
             <label>대형SUV</label>
         </div>
     </div>
 
+
     <div>
         <p>엔진</p>
         <div>
-            <input type="checkbox" name="engine" value="가솔린">
+            <input type="checkbox" name="engine" value="가솔린" onclick='checkOnlyOne(this)'>
             <label>가솔린</label>
         </div>
         <div>
-            <input type="checkbox" name="engine" value="LPG">
+            <input type="checkbox" name="engine" value="LPG" onclick='checkOnlyOne(this)'>
             <label>LPG</label>
         </div>
         <div>
-            <input type="checkbox" name="engine" value="하이브리드">
+            <input type="checkbox" name="engine" value="하이브리드" onclick='checkOnlyOne(this)'>
             <label>하이브리드</label>
         </div>
         <div>
-            <input type="checkbox" name="engine" value="디젤">
+            <input type="checkbox" name="engine" value="디젤" onclick='checkOnlyOne(this)'>
             <label>디젤</label>
         </div>
         <div>
-            <input type="checkbox" name="engine" value="전기차">
+            <input type="checkbox" name="engine" value="전기차" onclick='checkOnlyOne(this)'>
             <label>전기차</label>
         </div>
     </div>
 
+    <script>
+        function checkOnlyOne(element) {
+    const checkboxes = document.getElementsByName("engine");
+
+    if (element.checked) {
+        checkboxes.forEach((cb) => {
+            if (cb !== element) {
+                cb.checked = false;
+            }
+        });
+    } else {
+        element.checked = false;
+    }
+}
+    </script>
+
     <div>
         <p>배기량</p>
         <div>
-            <input type="checkbox" name="displacement" value="1500">
+            <input type="checkbox" name="displacement" value="1500" onclick='checkOnlyOne2(this)'>
             <label>1500cc 이하</label>
         </div>
         <div>
-            <input type="checkbox" name="displacement" value="2500">
+            <input type="checkbox" name="displacement" value="2500" onclick='checkOnlyOne2(this)'>
             <label>2500cc 이하</label>
         </div>
         <div>
-            <input type="checkbox" name="displacement" value="3501">
+            <input type="checkbox" name="displacement" value="3501" onclick='checkOnlyOne2(this)'>
             <label>3500cc 이하</label>
         </div>
     </div>
 
+    <script>
+        function checkOnlyOne2(element) {
+    const checkboxes = document.getElementsByName("displacement");
+
+    if (element.checked) {
+        checkboxes.forEach((cb) => {
+            if (cb !== element) {
+                cb.checked = false;
+            }
+        });
+    } else {
+        element.checked = false;
+    }
+}
+    </script>
+
     <div>
         <p>가격</p>
         <div>
-            <input type="checkbox" name="maxPrice" value="1500">
+            <input type="checkbox" name="maxPrice" value="1500" onclick='checkOnlyOne3(this)'>
             <label>1500만원 이하</label>
         </div>
         <div>
-            <input type="checkbox" name="maxPrice" value="3000">
+            <input type="checkbox" name="maxPrice" value="3000" onclick='checkOnlyOne3(this)'>
             <label>3000만원 이하</label>
         </div>
         <div>
-            <input type="checkbox" name="maxPrice" value="4000">
+            <input type="checkbox" name="maxPrice" value="4000" onclick='checkOnlyOne3(this)'>
             <label>4000만원 이하</label>
         </div>
         <div>
-            <input type="checkbox" name="maxPrice" value="5000">
+            <input type="checkbox" name="maxPrice" value="5000" onclick='checkOnlyOne3(this)'>
             <label>5000만원 이하</label>
         </div>
         <div>
-            <input type="checkbox" name="maxPrice" value="6000">
+            <input type="checkbox" name="maxPrice" value="6000" onclick='checkOnlyOne3(this)'>
             <label>6000만원 이하</label>
         </div>
         <div>
-            <input type="checkbox" name="maxPrice" value="1000000">
+            <input type="checkbox" name="maxPrice" value="1000000" onclick='checkOnlyOne3(this)'>
             <label>열라비싼거</label>
         </div>
     </div>
 
+    <script>
+        function checkOnlyOne3(element) {
+    const checkboxes = document.getElementsByName("maxPrice");
+
+    if (element.checked) {
+        checkboxes.forEach((cb) => {
+            if (cb !== element) {
+                cb.checked = false;
+            }
+        });
+    } else {
+        element.checked = false;
+    }
+}
+    </script>
+
     <div>
-        <button id="submitButton" type="submit"> 검색 </button>
+        <button id="submitButton" type="submit"> 검색</button>
     </div>
 
 </form>
-<script>
-    $(document).ready(function() {
-        $("#submitButton").click(function() {
-            const formData = $("#myForm").serialize();
-            $.ajax({
-                type: "POST",
-                url: "/",
-                data: formData,
-                success: function(response) {
-                    $("#response").html(response);
-                },
-                error: function(error) {
-                    console.error("Error sending data:", error);
-                }
-            });
-        });
-
-        $("input[type='checkbox']").change(function() {
-            const formData = $("#myForm").serialize();
-            $.ajax({
-                type: "POST",
-                url: "/",
-                data: formData,
-                success: function(response) {
-                    console.log("Checkbox data sent successfully");
-                },
-                error: function(error) {
-                    console.error("Error sending checkbox data:", error);
-                }
-            });
-        });
-    });
-</script>
-
-<!--    <div>-->
-<!--        <table>-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>#</th>-->
-<!--                <th>이름</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="article : ${articles}">-->
-<!--                <td th:text="${article.img_url}"></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
 
 <div id="slider-container">
     <div id="slider">
-        <tr th:each="car : ${cars}">
-            <div class="slide">
-                <img th:src="${car.imgUrl}">
-            </div>
-        </tr>
+<!--                <tr th:each="car : ${cars}">-->
+<!--                    <div class="slide">-->
+<!--                        <img th:src="${car.imgUrl}">-->
+<!--                    </div>-->
+<!--                </tr>-->
     </div>
 </div>
 <button id="prevBtn">Previous</button>
 <button id="nextBtn">Next</button>
 
+<script>
+    const slider = document.getElementById("slider");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const slideWidth = 1000; // 슬라이드 이미지의 너비
+
+    let currentSlide = 0;
+
+    prevBtn.addEventListener("click", () => {
+        currentSlide = Math.max(currentSlide - 1, 0);
+        updateSliderPosition();
+    });
+
+    nextBtn.addEventListener("click", () => {
+        currentSlide = Math.min(currentSlide + 1, slider.children.length - 1);
+        updateSliderPosition();
+    });
+
+    function updateSliderPosition() {
+        const offset = -currentSlide * slideWidth;
+        slider.style.transform = `translateX(${offset}px)`;
+    }
+
+    // 비동기식으로 데이터를 받아와서 슬라이더 업데이트
+    function updateSliderWithData(data) {
+        const newSlides = data.map(car => {
+            return `
+                <div class="slide">
+                    <img src="${car.imgUrl}">
+                </div>
+            `;
+        });
+
+        slider.innerHTML = newSlides.join("");
+        currentSlide = 0;
+        updateSliderPosition();
+    }
+
+    // 비동기식으로 데이터를 받아오는 함수
+    function fetchCarDataAndRefreshSlider() {
+        $.ajax({
+            type: "GET",
+            url: "/getCars", // 실제로 사용하는 엔드포인트로 변경해야 함
+            dataType: "json",
+            success: function(cars) {
+                updateSliderWithData(cars);
+            },
+            error: function(error) {
+                console.error("Error getting car data:", error);
+            }
+        });
+    }
+
+    // 초기 화면 로딩 시 슬라이더 업데이트
+    $(document).ready(function() {
+        fetchCarDataAndRefreshSlider();
+    });
+
+    // 검색 버튼 클릭 시 슬라이더 업데이트
+    $("#submitButton").click(function() {
+        const formData = $("#myForm").serialize();
+        sendFormData(formData);
+    });
+
+    $("input[type='checkbox']").change(function() {
+        const formData = $("#myForm").serialize();
+        sendFormData(formData);
+
+    });
+
+    function sendFormData(formData) {
+        $.ajax({
+            type: "POST",
+            url: "/",
+            data: formData,
+            success: function(response) {
+                console.log("Data sent successfully");
+                fetchCarDataAndRefreshSlider();
+            },
+            error: function(error) {
+                console.error("Error sending data:", error);
+            }
+        });
+    }
+</script>
+
+
 
 </body>
 </html>
+
+
 
 <style>
     body > form > div {
@@ -181,7 +270,7 @@
 }
 
      #slider-container {
-    width: 300px;
+    width: 1000px;
     overflow: hidden;
     position: relative;
   }
@@ -190,47 +279,46 @@
     transition: transform 0.3s ease-in-out;
   }
   .slide {
-    flex: 0 0 300px;
+    flex: 0 0 1000px;
   }
   img {
-    width: 300px;
-    height: 200px;
+    width: 1000px;
+    height: 700px;
   }
 
 
 </style>
 
-<script>
-    const slider = document.getElementById("slider");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const slideWidth = 300; // Adjust to your image width
+<!--<script>-->
+<!--    const slider = document.getElementById("slider");-->
+<!--  const prevBtn = document.getElementById("prevBtn");-->
+<!--  const nextBtn = document.getElementById("nextBtn");-->
+<!--  const slideWidth = 1000; // Adjust to your image width-->
 
-  let currentSlide = 0;
+<!--  let currentSlide = 0;-->
 
-  prevBtn.addEventListener("click", () => {
-    currentSlide = Math.max(currentSlide - 1, 0);
-    updateSliderPosition();
-  });
+<!--  prevBtn.addEventListener("click", () => {-->
+<!--    currentSlide = Math.max(currentSlide - 1, 0);-->
+<!--    updateSliderPosition();-->
+<!--  });-->
 
-  nextBtn.addEventListener("click", () => {
-    currentSlide = Math.min(currentSlide + 1, slider.children.length - 1);
-    updateSliderPosition();
-  });
+<!--  nextBtn.addEventListener("click", () => {-->
+<!--    currentSlide = Math.min(currentSlide + 1, slider.children.length - 1);-->
+<!--    updateSliderPosition();-->
+<!--  });-->
 
-  function updateSliderPosition() {
-    const offset = -currentSlide * slideWidth;
-    slider.style.transform = `translateX(${offset}px)`;
-  }
+<!--  function updateSliderPosition() {-->
+<!--    const offset = -currentSlide * slideWidth;-->
+<!--    slider.style.transform = `translateX(${offset}px)`;-->
+<!--  }-->
 
-   $(document).ready(function(){
-    $(checkbox).change(function(){
-        if($(checkbox).is(":checked")){
-            checkbox.submit();
-        }
-    });
-});
+<!--   $(document).ready(function(){-->
+<!--    $(checkbox).change(function(){-->
+<!--        if($(checkbox).is(":checked")){-->
+<!--            checkbox.submit();-->
+<!--        }-->
+<!--    });-->
+<!--});-->
 
 
-
-</script>
+<!--</script>-->

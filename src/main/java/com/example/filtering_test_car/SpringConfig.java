@@ -1,7 +1,6 @@
 package com.example.filtering_test_car;
 
-import com.example.filtering_test_car.repository.CarRepository;
-import com.example.filtering_test_car.repository.JpaCarRepository;
+import com.example.filtering_test_car.repository.*;
 import com.example.filtering_test_car.service.CarService;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +19,21 @@ public class SpringConfig {
 
     @Bean
     public CarService carService() {
-        return new CarService(carRepository());
+        return new CarService(carRepository(), optionRepository(), carDetailRepository());
     }
 
     @Bean
     public CarRepository carRepository() {
         return new JpaCarRepository(em);
+    }
+
+    @Bean
+    public OptionRepository optionRepository() {
+        return new JpaOptionRepository(em);
+    }
+
+    @Bean
+    public CarDetailRepository carDetailRepository() {
+        return new JpaCarDetailRepository(em);
     }
 }

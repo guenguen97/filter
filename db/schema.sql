@@ -169,3 +169,14 @@ minPrice = 4900,
 maxPrice = 5900,
 imgUrl = 'https://img1.daumcdn.net/thumb/S720x440ht.u/?fname=%2Fmedia%2Fvitraya%2Fauto%2Fimage%2Fc613a8%2FACCA5CB0E3B872BDCEABC3973A2B26611BC8303DD0574AAA15_85GK&scode=media'
 ;
+
+
+CREATE TABLE `filtering_test_car`.`option` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, `name` CHAR NOT NULL, `carId` JSON NOT NULL, PRIMARY KEY (`id`) );
+
+INSERT INTO `option`
+SET `name` = '네비게이션1',
+carId = '[1,2,3,4,5,6]';
+
+INSERT INTO `option`
+SET `name` = '네비게이션2',
+carId = '[1,2,3]';

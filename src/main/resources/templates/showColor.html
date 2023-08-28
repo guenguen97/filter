@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="bgImg">
+    <img class="carImg" src="https://www.hyundai.com/contents/vr360/MX03/exterior/WW2/001.png" alt="">
+</div>
+
+<div class="colorList">
+    <div th:each="carDetail : ${carDetails}" th:id="${carDetail.color}" th:class="${carDetail.color}">날 눌러라</div>
+</div>
+
+</body>
+
+<style>
+    .bgImg {
+        background-image: url('https://www.hyundai.com/static/images/model/santafe/23fc/the_all_new_santafe_colors_exterior_bg.jpg');
+        width: 1000px;
+        height: 500px;
+    }
+
+    .colorList {
+        display: flex;
+    }
+
+    .colorList>div {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        margin: 0 20px;
+    }
+</style>
+
+<script th:inline="javascript">
+    $(document).ready(function() {
+        <th:block th:each="carDetail : ${carDetails}">
+            $(".[[${carDetail.color}]]").on("click", function() {
+                $(".carImg").attr("src", "[[${carDetail.imgUrl}]]");
+            });
+        </th:block>
+    });
+</script>
+
+</html>
