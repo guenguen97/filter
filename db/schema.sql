@@ -180,3 +180,22 @@ carId = '[1,2,3,4,5,6]';
 INSERT INTO `option`
 SET `name` = '네비게이션2',
 carId = '[1,2,3]';
+
+CREATE TABLE carDetail (
+id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`name` CHAR(20) NOT NULL,
+`color` CHAR(20) NOT NULL,
+imgUrl TEXT NOT NULL
+);
+
+INSERT INTO carDetail
+SET `name` = '흰색',
+`color` = 'white',
+imgUrl = 'https://www.hyundai.com/contents/vr360/MX03/exterior/WW2/001.png'
+;
+
+INSERT INTO carDetail
+SET `name` = '갈색',
+`color` = 'brown',
+imgUrl = 'https://www.hyundai.com/contents/vr360/MX03/exterior/YBM/001.png'
+;
