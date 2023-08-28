@@ -93,7 +93,13 @@ public class CarController {
 
         List<CarDetail> carDetails =carService.getColor();
 
-        System.out.println(carDetails);
+        System.out.println(carDetails.get(0).getImgUrl());
+        System.out.println(carDetails.get(0).getColor());
+
+
+        for (CarDetail c: carDetails) {
+            System.out.println(c.getColor());
+        }
 
         model.addAttribute("carDetails", carDetails);
 

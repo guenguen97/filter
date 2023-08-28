@@ -12,7 +12,7 @@
 </div>
 
 <div class="colorList">
-    <div th:each="carDetail : ${carDetails}" th:id="${carDetail.color}" th:class="${carDetail.color}">날 눌러라</div>
+    <div th:each="carDetail : ${carDetails}" th:id="${carDetail.color}" th:style="'background-color: ' + ${carDetail.color}" th:data-img-url="${carDetail.imgUrl}" class="colorDiv">날 눌러라</div>
 </div>
 
 </body>
@@ -33,16 +33,19 @@
         height: 50px;
         border: 1px solid black;
         margin: 0 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 
-<script th:inline="javascript">
+<script>
     $(document).ready(function() {
-        <th:block th:each="carDetail : ${carDetails}">
-            $(".[[${carDetail.color}]]").on("click", function() {
-                $(".carImg").attr("src", "[[${carDetail.imgUrl}]]");
-            });
-        </th:block>
+        $(".colorDiv").on("click", function() {
+            var imgUrl = $(this).attr("data-img-url");
+            $(".carImg").attr("src", imgUrl);
+        });
     });
 </script>
 
