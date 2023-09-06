@@ -9,8 +9,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "carDetail")
-public class CarDetail {
+@Table(name = "carDetail2")
+public class CarDetail2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

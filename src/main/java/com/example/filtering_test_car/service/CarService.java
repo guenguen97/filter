@@ -3,6 +3,7 @@ package com.example.filtering_test_car.service;
 
 import com.example.filtering_test_car.domain.Car;
 import com.example.filtering_test_car.domain.CarDetail;
+import com.example.filtering_test_car.domain.CarDetail2;
 import com.example.filtering_test_car.domain.Option;
 import com.example.filtering_test_car.repository.CarDetailRepository;
 import com.example.filtering_test_car.repository.CarRepository;
@@ -34,6 +35,10 @@ public class CarService {
 
     public List<CarDetail> getColor() {
         return carDetailRepository.getColor();
+    }
+
+    public List<CarDetail2> getColor2() {
+        return carDetailRepository.getColor2();
     }
 
 }
