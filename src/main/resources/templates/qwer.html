@@ -26,12 +26,21 @@
             <div class="colorDiv dd" th:each="carDetail : ${carDetails}" onclick="doClick(this)" th:data-img-url="${carDetail.imgUrl}">
                 <div class="colorItem"
                      th:data-img-url="${carDetail.imgUrl}"
-                     th:style="'background-image: url(\'' + ${carDetail.btnUrl} + '\')'"></div>
+                     th:style="'background-image: url(\'' + ${carDetail.btnUrl} + '\')'">
+                    <input type="checkbox" >
+                </div>
                 <div class="colorItem2" th:text="${carDetail.name}" style="text-align: center;"  ></div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+
+
+
+</script>
+
 
 <div id="content2" >
     <div class="bgImg">
@@ -43,7 +52,9 @@
             <div class="colorDiv ddd" th:each="carDetail2 : ${carDetails2}" onclick="doClick(this)" th:data-img-url="${carDetail2.imgUrl}">
                 <div class="colorItem"
                      th:data-img-url="${carDetail2.imgUrl}"
-                     th:style="'background-image: url(\'' + ${carDetail2.btnUrl} + '\')'"></div>
+                     th:style="'background-image: url(\'' + ${carDetail2.btnUrl} + '\')'">
+                    <input type="checkbox" >
+                </div>
                 <div class="colorItem2" th:text="${carDetail2.name}" style="text-align: center;"  ></div>
             </div>
         </div>
@@ -230,6 +241,7 @@
 
 
     let previousDiv = null;
+    var selectedDiv = null;
 
 <!--    window.onload = function() {-->
 <!--        const firstDynamicDiv = document.querySelector('#content1 .colorList .colorDiv');-->
@@ -250,7 +262,29 @@
 
         // 현재 div를 이전 div로 설정
         previousDiv = currentDiv;
+
+
+         if (selectedDiv !== null) {
+                // 이전에 선택된 div의 checkbox를 해제합니다.
+                var previousCheckbox = selectedDiv.querySelector('input[type="checkbox"]');
+                previousCheckbox.checked = false;
+            }
+
+            // 현재 선택된 div를 저장합니다.
+            selectedDiv = currentDiv;
+
+            // 현재 선택된 .colorItem div 요소를 가져옵니다.
+            var colorItem = currentDiv.querySelector('.colorItem');
+
+            // 해당 .colorItem div 안의 checkbox 요소를 가져옵니다.
+            var checkbox = colorItem.querySelector('input[type="checkbox"]');
+
+            // checkbox 상태를 반전시킵니다.
+            checkbox.checked = !checkbox.checked;
     }
+
+
+
 
      function selectButton(button) {
       const buttons = document.querySelectorAll('.button-container button');

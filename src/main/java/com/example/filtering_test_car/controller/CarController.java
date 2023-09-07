@@ -1,10 +1,7 @@
 package com.example.filtering_test_car.controller;
 
 
-import com.example.filtering_test_car.domain.Car;
-import com.example.filtering_test_car.domain.CarDetail;
-import com.example.filtering_test_car.domain.CarDetail2;
-import com.example.filtering_test_car.domain.Option;
+import com.example.filtering_test_car.domain.*;
 import com.example.filtering_test_car.service.CarService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -94,16 +91,30 @@ public class CarController {
 
         List<CarDetail> carDetails =carService.getColor();
         List<CarDetail2> carDetails2 = carService.getColor2();
+        List<CarOption> carOption = carService.getList();
 
         System.out.println(carDetails2.get(0).getBtnUrl());
 
         model.addAttribute("carDetails", carDetails);
         model.addAttribute("carDetails2", carDetails2);
+        model.addAttribute("carOption", carOption);
 
-
-        return "qwer";
+        return "444";
 
     }
+
+    @PostMapping("/car/select")
+    public String getSelect(SelectForm selectForm) {
+
+        System.out.println(selectForm.getOptionId());
+        System.out.println(selectForm.getInteriorColor());
+        System.out.println(selectForm.getExteriorColor());
+
+
+        return "redirect:/";
+    }
+
+
 
 
 }

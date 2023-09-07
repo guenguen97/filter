@@ -1,5 +1,6 @@
 package com.example.filtering_test_car;
 
+import com.example.filtering_test_car.domain.CarOption;
 import com.example.filtering_test_car.repository.*;
 import com.example.filtering_test_car.service.CarService;
 import jakarta.persistence.EntityManager;
@@ -19,7 +20,7 @@ public class SpringConfig {
 
     @Bean
     public CarService carService() {
-        return new CarService(carRepository(), optionRepository(), carDetailRepository());
+        return new CarService(carRepository(), optionRepository(), carDetailRepository(), carOptionRepository());
     }
 
     @Bean
@@ -36,4 +37,11 @@ public class SpringConfig {
     public CarDetailRepository carDetailRepository() {
         return new JpaCarDetailRepository(em);
     }
+
+    @Bean
+    public CarOptionRepository carOptionRepository() {
+        return new JpaCarOptionRepository(em);
+    }
+
+
 }
