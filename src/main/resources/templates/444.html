@@ -79,7 +79,10 @@
                                     <a href="#" >
                                         <input class="checkbox" type="checkbox" th:name="optionId" th:value="${carOption.id}" >
                                         <div th:text="${carOption.name}"></div>
-                                        <div class="price" th:text="${carOption.price}+원"></div>
+                                        <div class="price2" style="display:inline-block; " th:text="${carOption.price}+원"><span>원</span></div><span>원</span>
+
+                                        <div class="price" style="display:none;" th:text="${carOption.price}"></div>
+                                        <br>
                                         <input class="radio" type="radio"  >
                                     </a>
                                 </div>
