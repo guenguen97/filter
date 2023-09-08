@@ -14,6 +14,16 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.19/fullpage.css"
     />
+<!--    섹션 2.3  css 와 js  -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/section2.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/section3.css}"/>
+    <script src="/js/all.js" defer></script>
+    <script src="/js/section2.js" defer></script>
+    <script src="/js/section3.js" defer></script>
+<!--숫자 자동으로 , 붙이게 하는 js -->
+    <script src="/js/money.js" defer></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.19/fullpage.min.js"></script>
 
 </head>
@@ -41,10 +51,14 @@
             <div class="img-section">
 
                 <div class="img-container">
-                    <div class="price-text" style="font-size : 40px;"> <span>총 가격 </span> <span class="option-price">35460000</span>  <span>원</span>  </div>
-                    <img class="img-item1" src="https://www.hyundai.com/contents/spec/MX5/passenger8waypowerseat_s.jpg" alt="">
+
+                    <div><h2 style="font-size:60px; margin-top:80px; margin-bottom:10px;">디 올 뉴 싼타페 - 프레스티지</h2></div>
+                    <div class="price-text" style="font-size : 40px; "> <span style="font-size:20px;     font-weight: bold;">총 차량 가격 </span> <span id="money" style="font-size:50px;    font-weight: bold;">35460000</span><span class="option-price" id="money2" style="display:none;" >35460000</span> <span style="font-size:50px;    font-weight: bold;">원</span>  </div>
+
+                    <img class="img-item1" src="https://www.hyundai.com/contents/spec/MX5/phone.jpg" alt="">
+                    <button type="button" title="" draggable="true" class="btn btn-info"></button>
                     <div class="information-box">
-                        <span class="information-text">동승석의 시트 포지션을 조정하여 동승자의 체형에 맞는 편안한 자세를 유지할 수 있도록 돕는 기능입니다. 8way 전동시트 : 동승석 우하단에 위치한 조작부로 8방향으로 조절 기능(시트백 기울기, 시트 앞/뒤 이동, 쿠션부 앞/뒤 높이 조절)을 전동 방식으로 조절합니다.</span>
+                        <span class="information-text">스마트폰 2대를 별도의 케이블 없이 고속 충전할 수 있는 듀얼 무선 충전 시스템이 적용되어 사용성을 높였습니다.</span>
                     </div>
                 </div>
             </div>
@@ -54,6 +68,7 @@
 
 
                 <div class="option-container">
+                    <h2 style="margin-top:100px; margin-bottom:20px; margin-left:40px">옵션</h2>
                     <div class="scrollable-container">
                         <div class="option-box" >
                             <div  id="box" class="option-item"  th:each="carOption : ${carOption}" th:id="${carOption.id}">
@@ -80,265 +95,6 @@
 
         <button class="btn-submit" type="submit" >차 등록</button>
 
-        <style>
-            html {
-             scroll-behavior: smooth;
-            }
-            a, body {
-            text-decoration:none;
-            color :inherit;
-            margin:0;
-            padding:0;
-            overflow-y: hidden;
-             overflow: auto
-              touch-action: auto;
-               position:relative;
-
-            }
-            #fullpage {
-
-            }
-
-            .top-bar-test {
-                position:fixed;
-                top:0;
-               z-index:10;
-                width: 100%; /* Make it full width */
-                   background-color: white;
-                   text-align:center;
-                   height:200px;
-                   opacity: 0.3;
-                   font-size:50px;
-                   background-color:skyblue;
-
-            }
-
-            #fullpage > .section {
-              display: block;
-
-            scroll-behavior: smooth;
-
-            }
-
-            .section-2 {
-                    background-color:white;
-            }
-
-            .option-section {
-                display :flex;
-                width :100%;
-                height: 700px;
-                margin-top: 200px;
-            }
-            .img-section {
-             width:50%;
-             height:100%;
-             border-right:1px solid black;
-
-            }
-            .img-section > .img-container {
-                margin-top:100px;
-                margin-bottom:auto;
-                 width :  600px ;
-                 height: 500px ;
-                margin-left: auto;
-                margin-right: auto;
-
-
-            }
-            .price-text {
-             margin-bottom:15px;
-            }
-
-
-            .img-section > .img-container >img {
-                    width :100% ;
-                    height: 60%;
-
-
-            }
-
-
-
-     .img-section> .img-container>.information-box {
-                    width :  600px ;
-                    height: 25g0px ;
-                margin-left: auto;
-                margin-right: auto;
-                margin-top:15px;
-                font-size: 25px;
-     }
-            .select-section {
-             width:50%;
-             height:100%;
-            }
-
-
-
-            .option-container {
-
-            width: 100%;
-            height:100%;
-            display : flex;
-
-            }
-             .option-container > .scrollable-container {
-             height:100%;
-             width : 90%;
-             overflow-x: hidden;
-
-             }
-
-
-
-            .option-box{
-            width :90%;
-            height:100%;
-            margin-left: auto;
-
-             display : flex;
-             flex-wrap :wrap;
-            }
-
-
-            .option-item {
-            width:240px;
-            margin : 60px;
-            height:220px;
-            text-align:center;
-            box-sizing:border-box;
-            border:1px solid gray;
-            border-radius: 5px; /* 둥근 모서리 */
-            position:relative;
-            }
-
-
-            .option-box-img {
-            width :100%;
-            height:70%;
-            }
-
-
-            /* 이미지 아래에 글이랑 가격 있는 공간  */
-            .check{
-
-            padding-bottom :10px;
-            display:inline-block;
-            width:100%;
-            height:30%;
-            margin-left:auto;
-            margin-right:auto;
-            box-sizing:border-box;
-            }
-
-
-            .option-item > div> a > .checkbox{
-
-            display:none;
-
-
-            }
-
-
-
-            .scrollable-container {
-        height: 80%; /* Adjust the height as needed */
-        overflow-y: scroll;
-          -webkit-overflow-scrolling: touch;
-           scroll-snap-type: y mandatory;
-
-
-    }
-
-    .scrollable-container::-webkit-scrollbar {
-    width: 20px; /* Adjust the scrollbar width as needed */
-}
-
-.scrollable-container::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-}
-
-.scrollable-container::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-
-            .border-highlight2 {
-
-
-                border-radius: 5px; /* 둥근 모서리 */
-                background-color: rgba(173, 216, 230, 0);
-
-                transition: transform 0.3s ease, background-color 0.3s ease; /* 부드러운 변화 효과 */
-                 border:2px solid #007fa8;
-
-
-            }
-
-
-            .resultImg {
-            width:500px;
-            height:500px;
-            border:1px solid red;
-            }
-        </style>
-
-        <script>
-            var optionPrice=null;
-                $(document).ready(function() {
-
-                             let tagIds = [];
-                           var text = $(".check");
-                           console.log(text);
-                        text.click(function() {
-                            var checkbox = $(this).find("input[type='checkbox']");
-                            var radio = $(this).find("input[type='radio']");
-                            var num = $(this).attr("value");
-
-                            optionPrice = $(".option-price").text();
-                            var currentPrice =  parseFloat(optionPrice, 10);
-                            var otherPrice = parseFloat(num, 10);
-
-                            var optionItem = document.getElementById('box');
-
-                            console.log(optionItem);
-                            if (checkbox.prop("checked")) {
-
-                                 checkbox.prop("checked", false);
-                                 radio.prop("checked", false);
-                                 $(".option-price").text(currentPrice-otherPrice);
-                                tagIds=tagIds.filter((element) => element !== $(this).attr("optionId"));
-
-                                    } else {
-                                       checkbox.prop("checked", true);
-                                       radio.prop("checked", true);
-                                         $(".option-price").text(currentPrice+otherPrice);
-                                             tagIds.push($(this).attr("optionId"));
-
-                                                console.log(tagIds);
-                                  }
-                        });
-
-
-                    });
-
-        </script>
-        <script>
-
-            $(".option-box-img").on("click", function() {
-                           var imgUrl = $(this).attr("data-img-url");
-                           var informationText = $(this).attr("information-text");;
-                           $(".img-item1").attr("src", imgUrl);
-                           $(".information-text").text(informationText);
-                       });
-
-           function doCheck(clickedDiv) {
-          var c = clickedDiv.closest('.option-item');
-
-          c.classList.toggle('border-highlight2');
-        }
-        </script>
 
 
     </div>
@@ -376,12 +132,6 @@
                 </div>
             </div>
 
-            <script>
-
-
-
-            </script>
-
 
             <div id="content2" >
                 <div class="bgImg">
@@ -404,300 +154,6 @@
 
 
 
-
-
-            <style>
-
-                .button-container {
-                  display: flex;
-                  align-items: center;
-                  margin-left: auto;
-                  margin-right: 8%;
-                }
-
-                .button-container button {
-                  padding: 10px 20px;
-                  font-size: 14px;
-                  border: none;
-                  border-radius: 5px;
-                  background-color: #3498db;
-                  color: white;
-                  cursor: pointer;
-                }
-
-                .button-container button.selected {
-                  background-color: #e74c3c;
-                }
-
-                .border-highlight {
-                        border: 2px ;
-                        padding: 0 10px; /* 내부 여백 추가 */
-                        border-radius: 5px; /* 둥근 모서리 */
-                        background-color: rgba(173, 216, 230, 0);
-                        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-                        transition: transform 0.3s ease, background-color 0.3s ease; /* 부드러운 변화 효과 */
-                    }
-
-               .colorItem2 {
-                        font-weight: bold;
-               }
-
-                #content2 > .bgImg {
-
-                   width: 1600px;
-                   height: 650px;
-                   display: flex;
-                   justify-content: center;
-                   align-items: center;
-                }
-
-                #content2 .carImg {
-
-                   width: 1600px;
-                   height: 650px;
-                   display: flex;
-                   justify-content: center;
-                   align-items: center;
-
-                }
-
-
-               #content1 > .bgImg {
-                   background-image: url('https://www.hyundai.com/static/images/model/santafe/23fc/the_all_new_santafe_colors_exterior_bg.jpg');
-                   width: 1600px;
-                   height: 650px;
-                   display: flex;
-                   justify-content: center;
-                   align-items: center;
-                   background-repeat: no-repeat; /* 이미지 반복 x */
-                    background-size: cover; /* 남는 공간 이미지를 채워줌,찌그러짐 x */
-                    background-position: center;
-               }
-
-               .colorListContainer {
-                   width: 1600px;
-                   overflow: hidden;
-               }
-
-               .colorList {
-                   display: flex;
-                   margin-top: 0;
-                   margin-bottom: 20px; /* 스크롤바와의 간격 조절 */
-                   width: max-content;
-               }
-
-               .colorList > .colorDiv{
-
-                   width: 190px;
-                   height: 110px;
-                   margin: 0 2px;
-                   cursor: pointer;
-                   display: flex;
-                   flex-wrap :wrap;
-                   justify-content: center;
-                   align-items: center;
-                   <!--        background-image : url('https://www.hyundai.com/contents/vr360/MX03/exterior/YBM/colorchip-exterior.png');-->
-               }
-
-                 .colorDiv > div {
-                    width :100%;
-                 }
-
-                 .colorItem {
-                 width :190px;
-                 height:90px;
-                 margin:10px;
-                 }
-
-                 .colorItem3 {
-                 width :190px;
-                 height:90px;
-                 margin:10px;
-                 }
-
-                /* 커스텀 스크롤 스타일링 */
-                   .colorListContainer::-webkit-scrollbar {
-                       width: 10px;
-                   }
-
-                   .colorListContainer::-webkit-scrollbar-thumb {
-                       background-color: rgba(0, 0, 0, 0.3);
-                       border-radius: 5px;
-                   }
-
-                   .colorListContainer::-webkit-scrollbar-thumb:hover {
-                       background-color: rgba(0, 0, 0, 0.5);
-                   }
-            </style>
-
-            <script>
-                $(document).ready(function() {
-
-                    const externalButton = document.getElementById('externalButton');
-                    selectButton(externalButton);
-
-
-                    var colorListContainer = $(".colorListContainer");
-                    var colorList = $(".colorList");
-
-                    $(".dd").on("click", function() {
-                        var imgUrl = $(this).attr("data-img-url");
-                        $(".cc").attr("src", imgUrl);
-
-
-                        // 스크롤 위치 조정
-                        var containerWidth = colorListContainer.width();
-                        var selectedDiv = $(this);
-                        var selectedDivOffset = selectedDiv.offset().left;
-                        var scrollOffset = selectedDivOffset - (containerWidth / 2) + (selectedDiv.width() / 2);
-                        colorListContainer.scrollLeft(scrollOffset);
-                    });
-
-                    if (colorList.width() > colorListContainer.width()) {
-                        colorListContainer.css("overflow-x", "scroll");
-                    }
-                });
-
-                $(document).ready(function() {
-
-                    const externalButton = document.getElementById('externalButton');
-                    selectButton(externalButton);
-
-
-                    var colorListContainer = $(".colorListContainer");
-                    var colorList = $(".colorList");
-
-                    $(".ddd").on("click", function() {
-                        var imgUrl = $(this).attr("data-img-url");
-                        $(".ccc").attr("src", imgUrl);
-
-
-                        // 스크롤 위치 조정
-                        var containerWidth = colorListContainer.width();
-                        var selectedDiv = $(this);
-                        var selectedDivOffset = selectedDiv.offset().left;
-                        var scrollOffset = selectedDivOffset - (containerWidth / 2) + (selectedDiv.width() / 2);
-                        colorListContainer.scrollLeft(scrollOffset);
-                    });
-
-                    if (colorList.width() > colorListContainer.width()) {
-                        colorListContainer.css("overflow-x", "scroll");
-                    }
-                });
-
-
-
-                let previousDiv = null;
-                var selectedDiv = null;
-
-                function doClick(currentDiv) {
-                    // 이전에 강조된 div가 있다면 border 스타일을 제거
-                    if (previousDiv !== null) {
-                        previousDiv.classList.remove('border-highlight');
-                    }
-
-                    // 현재 div에 border 스타일을 추가
-                    currentDiv.classList.add('border-highlight');
-
-                    // 현재 div를 이전 div로 설정
-                    previousDiv = currentDiv;
-
-
-                     if (selectedDiv !== null) {
-                            // 이전에 선택된 div의 checkbox를 해제합니다.
-                            var previousCheckbox = selectedDiv.querySelector('input[type="checkbox"]');
-                            previousCheckbox.checked = false;
-                        }
-
-                        // 현재 선택된 div를 저장합니다.
-                        selectedDiv = currentDiv;
-
-                        // 현재 선택된 .colorItem div 요소를 가져옵니다.
-                        var colorItem = currentDiv.querySelector('.colorItem');
-
-                        // 해당 .colorItem div 안의 checkbox 요소를 가져옵니다.
-                        var checkbox = colorItem.querySelector('input[type="checkbox"]');
-
-                        // checkbox 상태를 반전시킵니다.
-                        checkbox.checked = !checkbox.checked;
-                }
-
-
-                let previousDiv2 = null;
-                var selectedDiv2 = null;
-
-                function doClick2(currentDiv) {
-                    // 이전에 강조된 div가 있다면 border 스타일을 제거
-                    if (previousDiv2 !== null) {
-                        previousDiv2.classList.remove('border-highlight');
-                    }
-
-                    // 현재 div에 border 스타일을 추가
-                    currentDiv.classList.add('border-highlight');
-
-                    // 현재 div를 이전 div로 설정
-                    previousDiv2 = currentDiv;
-
-
-                     if (selectedDiv2 !== null) {
-                            // 이전에 선택된 div의 checkbox를 해제합니다.
-                            var previousCheckbox = selectedDiv2.querySelector('input[type="checkbox"]');
-                            previousCheckbox.checked = false;
-                        }
-
-                        // 현재 선택된 div를 저장합니다.
-                        selectedDiv2 = currentDiv;
-
-                        // 현재 선택된 .colorItem div 요소를 가져옵니다.
-                        var colorItem2 = currentDiv.querySelector('.colorItem3');
-
-                        // 해당 .colorItem div 안의 checkbox 요소를 가져옵니다.
-                        var checkbox2 = colorItem2.querySelector('input[type="checkbox"]');
-
-                        // checkbox 상태를 반전시킵니다.
-                        checkbox2.checked = !checkbox2.checked;
-                }
-
-
-
-
-
-
-                 function selectButton(button) {
-                  const buttons = document.querySelectorAll('.button-container button');
-                  buttons.forEach(btn => btn.classList.remove('selected'));
-                  button.classList.add('selected');
-
-                  if (button.textContent === '외부 색상') {
-                    document.getElementById('content1').style.display = 'block';
-                    document.getElementById('content2').style.display = 'none';
-                } else if (button.textContent === '내부 색상') {
-                    document.getElementById('content1').style.display = 'none';
-                    document.getElementById('content2').style.display = 'block';
-                    }
-                }
-
-                function toggleContentDisplay(contentId, display) {
-                const content = document.getElementById(contentId);
-                const contentElements = content.querySelectorAll('*');
-
-                if (display === 'none') {
-                    content.style.display = 'none';
-                    contentElements.forEach(element => {
-                        element.classList.add('hidden-element');
-                    });
-                } else {
-                    content.style.display = 'block';
-                    contentElements.forEach(element => {
-                        element.classList.remove('hidden-element');
-                    });
-                }
-            }
-
-
-            </script>
-
-
         </div>
     </div>
 
@@ -713,42 +169,12 @@
 
 
 
-
-
-
-
-
 </div>
-
-
 
 
 </form>
 </body>
 </html>
-
-<script>
-    new fullpage("#fullpage", {
-//options here
-autoScrolling: true,
-scrollHorizontally: true,
-sectionsColor: ["pink", "white", "tomato", "plum"],
-//a태그 링크 url주소로 바꿔야함
-anchors: ["section1", "section2", "section3", "section4"],
-//navigation 동그라미 버튼 페이지
-navigation: true,
-navigationPosition: "left",
-navigationTooltips: ["section1", "section2", "section3", "section4"],
-//navigation 이름을 계속 뜸
-showActiveTooltip: true,
-slidesNavigation: true,
-//마지막페이지 스크롤하면 첫번째 페이지로 이동
-loopBottom: true,
-//첫번째 페이지 스크롤하면 마지막페이지로 이동
-loopTop: true,
-});
-
-</script>
 
 <style>
 
