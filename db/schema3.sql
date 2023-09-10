@@ -1,3 +1,5 @@
+
+
 INSERT INTO caroption
 SET `name` = '플래티넘1',
 imgUrl = 'https://www.hyundai.com/contents/spec/MX5/phone.jpg',
@@ -10,7 +12,7 @@ price = 450000;
 INSERT INTO caroption
 SET `name` = '빌트인 캠',
 imgUrl = 'https://www.hyundai.com/contents/spec/MX5/built.jpg',
-information='고해상도 전용 전,후방 카메라로 주/야간 화질이 우수하며 음성 녹음, 대용량 외장 메모리, OTA 기능, 차량 주행 정보 저장 및 재생 기능(지도 연동 등)이 적용되었습니다. 블루링크를 통해 주차 중 충격 감지 저장 영상 전송 및 빌트인 캠 상태 정보도 제공합니다.',
+information='고해상도 전용 전,후방 카메라로 주/야간 화질이 우수하며 음성 녹음, 대용량 외장 메모리, OTA 기능, 차량 주행 정보 저장 및 재생 기능(지도 연동 등)이 적용되었습니다. ',
 price = 450000;
 
 
@@ -26,8 +28,7 @@ price = 1240000;
 INSERT INTO caroption
 SET `name` = '동승 8way 전동시트',
 imgUrl = 'https://www.hyundai.com/contents/spec/MX5/passenger8waypowerseat.jpg',
-information='동승석의 시트 포지션을 조정하여 동승자의 체형에 맞는 편안한 자세를 유지할 수 있도록 돕는 기능입니다.
-8way 전동시트 : 동승석 우하단에 위치한 조작부로 8방향으로 조절 기능(시트백 기울기, 시트 앞/뒤 이동, 쿠션부 앞/뒤 높이 조절)을 전동 방식으로 조절합니다.',
+information='동승석의 시트 포지션을 조정하여 동승자의 체형에 맞는 편안한 자세를 유지할 수 있도록 돕는 기능입니다.',
 price = 200000;
 
 
@@ -55,9 +56,7 @@ INSERT INTO caroption
 SET `name` = '빌트인 공기청정기 2.0',
 imgUrl = 'https://www.hyundai.com/contents/spec/MX5/buitair.jpg',
 information='차량 실내에 2열 좌석 중심으로 청정 공기를 신속하게 공급해주는 공기 청정기 상품입니다.
-넓은 LCD 패널을 추가하여 공기 청정기 작동 현황을 상세하게 확인이 가능하며, 터치 패널을 통해 편리하게 작동/제어가 가능합니다.
-C 타입 USB 단자가 적용되어 있습니다.
-※ 빌트인 공기청정기 2.0은 조수석 1열 릴렉션 시트 작동시 2열 시트와 일부 간섭이 발생합니다.',
+넓은 LCD 패널을 추가하여 공기 청정기 작동 현황을 상세하게 확인이 가능하며, 터치 패널을 통해 편리하게 작동/제어가 가능합니다.',
 price = 530000;
 
 INSERT INTO caroption
