@@ -1,49 +1,4 @@
 
-
-    html {
-             scroll-behavior: smooth;
-            }
-            a, body {
-            text-decoration:none;
-            color :inherit;
-            margin:0;
-            padding:0;
-            overflow-y: hidden;
-             overflow: auto
-              touch-action: auto;
-               position:relative;
-
-            }
-            #fullpage {
-
-            }
-                /*  페이지 개발 도구 창에만 이런게 있어서 페이지가 짤려서 뭐지 하고 얘만 따로 추가함   */
-
-
-            .fp-overflow {
-                    height:100%;
-            }
-            .top-bar-test {
-                position:fixed;
-                top:0;
-               z-index:10;
-                width: 100%; /* Make it full width */
-                   background-color: white;
-                   text-align:center;
-                   height:100px;
-                   opacity: 0.3;
-                   font-size:50px;
-                   background-color:skyblue;
-
-            }
-
-            #fullpage > .section {
-              display: block;
-
-            scroll-behavior: smooth;
-
-            }
-
             .section-2 {
                     background-color:white;
                     height:931px;
@@ -114,7 +69,9 @@
              .option-container > .scrollable-container {
              height:80%;
              width : 90%;
-             overflow-x: hidden;
+
+                overflow-y: scroll;
+
 
              }
 
@@ -172,14 +129,6 @@
 
 
 
-            .scrollable-container {
-        height: 80%; /* Adjust the height as needed */
-        overflow-y: scroll;
-          -webkit-overflow-scrolling: touch;
-           scroll-snap-type: y mandatory;
-
-
-    }
 
     .scrollable-container::-webkit-scrollbar {
     width: 20px; /* Adjust the scrollbar width as needed */
