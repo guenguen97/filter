@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/section2.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/section3.css}"/>
     <script src="/js/all.js" defer></script>
+
     <script src="/js/section2.js" defer></script>
     <script src="/js/section3.js" defer></script>
 <!--숫자 자동으로 , 붙이게 하는 js -->
@@ -32,18 +33,20 @@
 
 <form id="section3-form" action="/car/select"  method="post">
     <div class="top-bar-test">탑바가 들어갈 공간</div>
-<div id="fullpage">
 
-    <!-- 1 -->
-    <div class="section section-1">
+    <div id="fullpage">
         <div class="video-container">
             <video autoplay loop muted playsinline>
-                <source src="/video.mp4" type="video/mp4">
+                <source src="video.mp4" id="video1"  type="video/mp4">
                 <!-- Add more source elements for different video formats if needed -->
-                Your browser does not support the video tag.
-            </video>
 
+
+            </video>
         </div>
+    <!-- 1 -->
+    <div class="section section-1">
+
+
         <a href="#section2"
         ></a>
     </div>
