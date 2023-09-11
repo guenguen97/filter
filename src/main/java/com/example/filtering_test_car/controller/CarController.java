@@ -130,10 +130,10 @@ public class CarController {
             int colorId = selectOption.getOutColorId();
             colorIds.add(colorId);
         }
-        List<CarDetail> carDetails =carService.getCarDetailByColorId(colorIds);
+//        List<CarDetail> carDetails =carService.getCarDetailByColorId(colorIds);
 
         model.addAttribute("selectOption", selectOptions);
-        model.addAttribute("carDetails", carDetails);
+//        model.addAttribute("carDetails", carDetails);
 
 
         return "myPage";
