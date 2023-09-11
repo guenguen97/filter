@@ -26,6 +26,7 @@
                                        var money2 = $('#money2').text();
                                               var money3 = money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                                 $('#money').text(money3);
+                                 $('input[name=wholePrice]').attr('value',money2);
                                     } else {
                                        checkbox.prop("checked", true);
                                        radio.prop("checked", true);
@@ -35,7 +36,9 @@
                                         var money2 = $('#money2').text();
                                          var money3 = money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                                             $('#money').text(money3);
-                                                console.log(tagIds);
+                                            console.log(money2);
+                                             $('input[name=wholePrice]').attr('value',money2);
+
                                   }
                         });
 

@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<form id="section3-form" action="/car/select"  method="post">
+<form id="section3-form" th:action="@{/dd}"  method="post">
     <div class="top-bar-test">탑바가 들어갈 공간</div>
 
     <div id="fullpage">
@@ -137,7 +137,7 @@
                             <div class="colorItem"
                                  th:data-img-url="${carDetail.imgUrl}"
                                  th:style="'background-image: url(\'' + ${carDetail.btnUrl} + '\')'">
-                                <input type="checkbox" name="exteriorColor" th:value="${carDetail.id}" style="display: none;">
+                                <input type="checkbox" name="outColorId" th:value="${carDetail.id}" style="display: none;">
                             </div>
                             <div class="colorItem2" th:text="${carDetail.name}" style="text-align: center;"  ></div>
                         </div>
@@ -157,7 +157,7 @@
                             <div class="colorItem3"
                                  th:data-img-url="${carDetail2.imgUrl}"
                                  th:style="'background-image: url(\'' + ${carDetail2.btnUrl} + '\')'">
-                                <input type="checkbox" name="interiorColor" th:value="${carDetail2.id}" style="display: none; ">
+                                <input type="checkbox" name="inColorId" th:value="${carDetail2.id}" style="display: none; ">
 
                             </div>
                             <div class="colorItem2" th:text="${carDetail2.name}" style="text-align: center;"  ></div>
@@ -166,7 +166,8 @@
                 </div>
 
             </div>
-            <button class="btn-submit" type="submit" style="margin-top:20px;" >차 등록</button>
+            <input type="hidden" value="" name="wholePrice" />
+            <button class="btn-submit" type="submit" style="margin-top:20px;" value="" name="wholePrice" >차 등록</button>
 
 
         </div>
@@ -183,7 +184,7 @@
         <h1>반갑습니다 섹션4입니다.</h1>
     </div>
 
-
+        <input type="hidden" value="" name="wholePrice" />
 
 </div>
 

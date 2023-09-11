@@ -38,7 +38,11 @@
 
 <!--      견적 db 들어갈 공간 -->
         <div   style="border:1px solid green" class="main-box2-body">
-            저장한 견적 내용이 없습니다.
+            <div class="" th:each="selectOption : ${selectOption}">
+                <div class=""> 싼타페</div>
+                <div class="" th:text="${selectOption.wholePrice}" ></div>
+                <div class="" th:text="${selectOption.createDate}" ></div>
+            </div>
 
         </div>
 

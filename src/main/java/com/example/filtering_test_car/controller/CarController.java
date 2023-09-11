@@ -1,12 +1,11 @@
 package com.example.filtering_test_car.controller;
 
 
+import com.example.filtering_test_car.service.SelectOptionService;
 import com.example.filtering_test_car.domain.*;
 import com.example.filtering_test_car.service.CarService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +15,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+import static com.example.filtering_test_car.domain.QSelectOption.selectOption;
+
 @Controller
 public class CarController {
 
     private final CarService carService;
+
+    @Autowired
+    private SelectOptionService selectOptionService;
+    private List<SelectOption> selectOptions;
 
     private List<Car> cars;
 
@@ -108,12 +113,22 @@ public class CarController {
 
         System.out.println(selectForm.getOptionId());
         System.out.println(selectForm.getInteriorColor());
-        System.out.println(selectForm.getExteriorColor());
+
 
 
         return "redirect:/";
     }
 
+    @GetMapping("/myPage") // Option 테스트용
+    public String showMyPage(Model model) {
+        List<SelectOption> selectOptions = selectOptionService.getList();
+
+        model.addAttribute("selectOption", selectOptions);
+
+
+        return "myPage";
+
+    }
 
 
 

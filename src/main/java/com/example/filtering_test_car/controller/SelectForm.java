@@ -17,6 +17,10 @@ public class SelectForm {
 
     private Integer InteriorColor;
 
+    private Integer inColor;
+
+    private Integer outColor;
+
 
 
 }
