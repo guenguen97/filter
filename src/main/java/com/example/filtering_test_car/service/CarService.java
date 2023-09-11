@@ -42,6 +42,10 @@ public class CarService {
         return carDetailRepository.getColor();
     }
 
+    public List<CarDetail> getCarDetailByColorId(List<Integer> id) {
+        return carDetailRepository.getCarDetailByColorId(id);
+    }
+
     public List<CarDetail2> getColor2() {
         return carDetailRepository.getColor2();
     }

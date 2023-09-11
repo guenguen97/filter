@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.filtering_test_car.domain.QSelectOption.selectOption;
@@ -122,8 +123,17 @@ public class CarController {
     @GetMapping("/myPage") // Option 테스트용
     public String showMyPage(Model model) {
         List<SelectOption> selectOptions = selectOptionService.getList();
+        List<Integer> colorIds = new ArrayList<>();
+
+        for (SelectOption selectOption : selectOptions) {
+            // Assuming getColorId() is the method to retrieve the colorId from SelectOption
+            int colorId = selectOption.getOutColorId();
+            colorIds.add(colorId);
+        }
+        List<CarDetail> carDetails =carService.getCarDetailByColorId(colorIds);
 
         model.addAttribute("selectOption", selectOptions);
+        model.addAttribute("carDetails", carDetails);
 
 
         return "myPage";

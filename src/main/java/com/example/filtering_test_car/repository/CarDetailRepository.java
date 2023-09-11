@@ -10,5 +10,7 @@ public interface CarDetailRepository {
     List<CarDetail> getColor();
     List<CarDetail2> getColor2();
 
+    List<CarDetail> getCarDetailByColorId(List<Integer> id);
+
 
 }

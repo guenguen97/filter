@@ -3,6 +3,7 @@ package com.example.filtering_test_car.repository;
 
 import com.example.filtering_test_car.domain.CarDetail;
 import com.example.filtering_test_car.domain.CarDetail2;
+import com.example.filtering_test_car.domain.Option;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,4 +29,15 @@ public class JpaCarDetailRepository implements CarDetailRepository {
         return em.createQuery("select d from CarDetail2 d", CarDetail2.class)
                 .getResultList();
     }
+
+    @Override
+    public List<CarDetail> getCarDetailByColorId(List<Integer> id) {
+        return em.createNativeQuery(
+                        "SELECT * FROM `carDetail` WHERE JSON_ARRAY_CONTAINS(:id, JSON_ARRAYAGG(id)) = 1",
+                        CarDetail.class
+                )
+                .setParameter("id", id)
+                .getResultList();
+    }
+
 }
