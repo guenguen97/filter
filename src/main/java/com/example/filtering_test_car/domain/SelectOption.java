@@ -17,8 +17,8 @@ public class SelectOption {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Long id;
 
-    @Column(length = 200) // VARCHAR(200)
-    private String userName;
+    @Column() // VARCHAR(200)
+    private Integer userId;
 
 
     @ElementCollection

@@ -1,5 +1,6 @@
 package com.example.filtering_test_car.repository;
 
+import com.example.filtering_test_car.domain.CarDetail;
 import com.example.filtering_test_car.domain.CarOption;
 import jakarta.persistence.EntityManager;
 
@@ -19,6 +20,17 @@ public class JpaCarOptionRepository implements CarOptionRepository {
         return em.createQuery("select o from CarOption o", CarOption.class)
                 .getResultList();
     }
+
+    @Override
+    public List<CarOption> findById(List<Integer> id) {
+        return em.createNativeQuery(
+                        "SELECT * FROM CarOption  WHERE CarOption.id in :id",
+                        CarOption.class
+                )
+                .setParameter("id", id)
+                .getResultList();
+    }
+
 
 //    @Override
 //    public List<CarOption> findByid(Integer optionIds){

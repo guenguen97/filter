@@ -7,6 +7,8 @@ public interface CarOptionRepository {
 
     List<CarOption> findAll();
 
+    List<CarOption> findById(List<Integer> id);
+
 //    List<CarOption> findById();
 
 }

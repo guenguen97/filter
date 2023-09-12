@@ -52,6 +52,10 @@ public class CarService {
         return carOptionRepository.findAll();
     }
 
+
+
+    public List<CarOption> getCarOptionById(List<Integer> id){ return carOptionRepository.findById(id);}
+
 //    public List<CarOption> getCarOptionByOptionId(List<List<Integer>> optionIds) {
 //        return carOptionRepository.getCarDetailByColorId(optionIds);
 //    }

@@ -21,7 +21,7 @@ public class SelectOptionController {
                          SelectForm selectForm, @RequestParam("inColorId") String inColorId ,
                          @RequestParam("outColorId") String outColorId ,@RequestParam("wholePrice") String wholePrice) {
 
-        selectOptionService.create(selectOption.getUserName(),selectOption.getInColorId(),
+        selectOptionService.create(selectOption.getUserId(),selectOption.getInColorId(),
                 selectOption.getOptionId(),selectOption.getOutColorId(), selectOption.getWholePrice());
         System.out.println("차 옵션 만드는거 1차 실행부분");
         System.out.println(selectOption.getOptionId());

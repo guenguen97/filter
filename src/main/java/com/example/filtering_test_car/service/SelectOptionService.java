@@ -16,11 +16,11 @@ public class SelectOptionService {
     private  final SelectOptionRepository2 selectOptionRepository2;
 
 
-    public SelectOption create(String userName, Integer inColorId,List<Integer> optionId ,Integer outColorId,
+    public SelectOption create(Integer userId, Integer inColorId,List<Integer> optionId ,Integer outColorId,
                                  Integer wholePrice   ) {
         SelectOption user = new SelectOption();
 
-        user.setUserName(userName);
+        user.setUserId(userId);
         user.setInColorId(inColorId);
         user.setOutColorId(outColorId);
         user.setOptionId(optionId);

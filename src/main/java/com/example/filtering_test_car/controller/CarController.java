@@ -121,45 +121,48 @@ public class CarController {
     }
 
     @GetMapping("/myPage") //
-    public String showMyPage(Model model) {
+    public String showMyPage(Model model,Integer userId, Integer selectOptionId) {
+        //여기에는 이제 userId 를 매개변수로 넣어서 그 userId 의 차 견적 정보만 뜨게 하기
+        // 지금은 전체 견적 리스트 뽑음
+        //상세페이지에서는 이 리스트가 하나만 나오게 해야됨
         List<SelectOption> selectOptions = selectOptionService.getList();
-//        System.out.println(selectOptions.get(1).getOptionId());
 
         System.out.println("마이 페이지 실행 시작");
         List<Integer> colorIds = new ArrayList<>();
         List<Integer> optionIds = new ArrayList<>();
          List<Integer> optionId1= new ArrayList<>();
-//         여기에 유저id 나 그런거 넣으면 optionid 를 리스트 형태로 반환함
+//         여기에 유저id ,userId 나 그런거 넣으면 optionid 를 리스트 형태로 반환함
+        // 지금은 예시용으로 1번 유저의 견적 정보 받음
          optionIds= carService.getSelectOptionIdsById(1);
 
         System.out.println(optionIds.get(1));
-//        optionId1=carService.getCarOptionIdsById(1);
 
         for (SelectOption selectOption : selectOptions) {
             // Assuming getColorId() is the method to retrieve the colorId from SelectOption
             int colorId = selectOption.getOutColorId();
             colorIds.add(colorId);
         }
-//        for (SelectOption selectOption : selectOptions) {
-//            // Assuming getColorId() is the method to retrieve the colorId from SelectOption
-//           List<Integer> optionId = selectOption_optionid.getOptionId();
-//            System.out.println(optionId.get(2));
-//           optionIds.add(optionId);
-//        }
-//
-        List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
-//        List<CarOption> carOption=carService.getCarOptionByOptionId(optionIds);
 
-//        System.out.println(carDetail.get(0).getImgUrl());
-//        System.out.println(carOption.get(0).getImgUrl());
-//
+        List<CarOption> carOption =carService.getCarOptionById(optionIds);
+        List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
+        System.out.println(carOption.get(0).getName());
+        System.out.println(carOption.get(1).getName());
+
         model.addAttribute("selectOption", selectOptions);
         model.addAttribute("carDetail", carDetail);
-
+        model.addAttribute("carOption", carOption);
 
         return "myPage";
 
     }
+
+    @GetMapping("myPageDetail/{selectOptionId}")
+    public String showMyPageDetail(Model model,Integer userId, Integer selectOptionId) {
+
+
+        return "myPageDetail";
+    }
+
 
 
 
