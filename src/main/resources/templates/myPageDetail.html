@@ -41,7 +41,8 @@
             <!--      견적 db 들어갈 공간 -->
             <div   style="" class="main-box2-body">
                 <div class="main-box2-body-container" th:each="selectOption, s: ${selectOption}"  >
-                    <div ><img class="option-car" src="" th:src="${carDetail[s.index].imgUrl}"></div>
+                    <div ><img class="option-car" src="" th:src="${selectOption.outImgUrl}"></div>
+                    <div ><img class="option-car" src="" th:src="${selectOption.inImgUrl}"></div>
                     <div class="main-box2-body-container-item1"> 싼타페</div>
                     <div th:each="carOption: ${carOption}"> <img style="width:150px; height:150px" src="" th:src="${carOption.imgUrl}"> </div>
                     <div class="main-box2-body-container-item2"> </div>

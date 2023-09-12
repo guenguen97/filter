@@ -23,32 +23,39 @@
     <div class="top-bar-container">
     </div>
 </div>
-
+<h1>견적 상세 페이지</h1>
 <div class="main-section">
     <div class="main-box1">
         <div style="margin-left : 20px"><input class="allCheckBox" type="checkBox">전체 선택</input>   </div>
         <div  style=" margin-right:20px; "><button class = "delButton">삭제</button></div>
     </div>
     <div class="main-box2">
-       <div class="main-box2-title">
-           <div  class="main-box2-title-item1" style="">모델</div>
-           <div class="main-box2-title-item2" style="">견적 금액</div>
-           <div class="main-box2-title-item3" style="">견적일</div>
-       </div>
-
-<!--삭제 폼 넣기-->
-        <form action="">
-<!--      견적 db 들어갈 공간 -->
-        <div   style="" class="main-box2-body">
-            <div class="main-box2-body-container" th:each="selectOption, s : ${selectOption}">
-                <a th:href="@{|/myPageDetail/${selectOption.id}|}"><div><img class="option-car" src="" th:src="${selectOption.outImgUrl}"></div></a>
-                <div class="main-box2-body-container-item1"> 싼타페</div>
-                <div class="main-box2-body-container-item2"> </div>
-                <div class="main-box2-body-container-item2" th:text="${selectOption.wholePrice}" ></div>
-                <div class="main-box2-body-container-item3" th:text="${selectOption.createDate}" ></div>
-                <input class="main-box2-body-container-checkbox" type="checkbox">
-            </div>
+        <div class="main-box2-title">
+            <div  class="main-box2-title-item1" style="">모델</div>
+            <div class="main-box2-title-item2" style="">견적 금액</div>
+            <div class="main-box2-title-item3" style="">견적일</div>
         </div>
+
+        <!--삭제 폼 넣기-->
+        <form action="">
+            <!--      견적 db 들어갈 공간 -->
+            <div   style="" class="main-box2-body">
+                <div class="main-box2-body-container" th:each="selectOption, s: ${selectOption}"  >
+                    <div ><img class="option-car" src="" th:src="${selectOption.outImgUrl}"></div>
+                    <div ><img class="option-car" src="" th:src="${selectOption.inImgUrl}"></div>
+                    <div class="main-box2-body-container-item1"> 싼타페</div>
+<!--                    <div th:each="carOption: ${carOption}"> <img style="width:150px; height:150px" src="" th:src="${carOption.imgUrl}"> </div>-->
+                    <div class="main-box2-body-container-item2"> </div>
+                    <div class="main-box2-body-container-item2" th:text="${selectOption.wholePrice}+원" ></div>
+                    <div class="main-box2-body-container-item3" th:text="${selectOption.createDate}" ></div>
+                    <input class="main-box2-body-container-checkbox" type="checkbox">
+
+                </div>
+
+
+
+
+            </div>
         </form>
     </div>
     <div class="main-box3">
@@ -60,7 +67,7 @@
 
         </div>
 
-        </div>
+    </div>
 </div>
 
 
@@ -147,7 +154,7 @@
 
 
         .option-car{
-                width:200px;
+                width:300px;
                 height:150px;
 
         }
@@ -169,13 +176,11 @@
         }
 
         .main-box2-body-container{
-        display :flex;
+
          justify-content : space-around;
            text-align:center;
             font-size:20px;
             margin : 20px 0;
-            max-height:1500px;
-
 
         }
 

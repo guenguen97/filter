@@ -33,6 +33,14 @@ public class JpaSelectOptionRepository implements SelectOptionRepository {
                 .getResultList();
     }
 
+    @Override
+    public List<SelectOption> getLastSelectOption() {
+        return em.createNativeQuery(
+                        "SELECT * FROM selectOption ORDER BY id DESC LIMIT 1")
+
+                .getResultList();
+    }
+
 
 
 

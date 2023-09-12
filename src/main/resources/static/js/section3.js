@@ -10,7 +10,7 @@
                     $(".dd").on("click", function() {
                         var imgUrl = $(this).attr("data-img-url");
                         $(".cc").attr("src", imgUrl);
-                         $(".dbGoImg").attr("value", imgUrl);
+                         $(".dbGoOutImg").attr("value", imgUrl);
 
 
                         // 스크롤 위치 조정
@@ -38,6 +38,7 @@
                     $(".ddd").on("click", function() {
                         var imgUrl = $(this).attr("data-img-url");
                         $(".ccc").attr("src", imgUrl);
+                         $(".dbGoInImg").attr("value", imgUrl);
 
 
                         // 스크롤 위치 조정

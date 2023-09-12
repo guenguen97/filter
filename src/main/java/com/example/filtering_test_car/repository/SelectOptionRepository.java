@@ -10,4 +10,6 @@ public interface SelectOptionRepository {
     List<Integer> findOptionDetailById(Integer i);
 
     List<SelectOption> findBySelectOptionId(Integer selectOptionId);
+
+    List<SelectOption> getLastSelectOption();
 }

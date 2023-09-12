@@ -17,9 +17,13 @@ public class SelectOptionService {
     private  final SelectOptionRepository2 selectOptionRepository2;
     private  final SelectOptionRepository selectOptionRepository;
 
+    public List<SelectOption> getLastSelectOption() {
+        return this.selectOptionRepository2.getLastSelectOption();
+    }
+
 
     public SelectOption create(Integer userId, Integer inColorId,List<Integer> optionId ,Integer outColorId,
-                                 Integer wholePrice ,String imgUrl  ) {
+                                 Integer wholePrice ,String outImgUrl, String inImgUrl  ) {
         SelectOption user = new SelectOption();
 
         user.setUserId(userId);
@@ -28,7 +32,9 @@ public class SelectOptionService {
         user.setOptionId(optionId);
         user.setWholePrice(wholePrice);
         user.setCreateDate(LocalDateTime.now());
-        user.setImgUrl(imgUrl);
+        user.setOutImgUrl(outImgUrl);
+        user.setInImgUrl(inImgUrl);
+
 
         return selectOptionRepository2.save(user);
     }

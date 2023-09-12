@@ -126,15 +126,18 @@ public class CarController {
         //여기에는 이제 userId 를 매개변수로 넣어서 그 userId 의 차 견적 정보만 뜨게 하기
         // 지금은 전체 견적 리스트 뽑음
         //상세페이지에서는 이 리스트가 하나만 나오게 해야됨
+        //내 차만들기 하고 바로 견적서 보여주려면 로그인한 유저의 가장 최근에 추가된
+        // selectOption db 정보를 보여주면 될것같다.
         List<SelectOption> selectOptions = selectOptionService.getList();
 
         System.out.println("마이 페이지 실행 시작");
         List<Integer> colorIds = new ArrayList<>();
-        List<Integer> optionIds = new ArrayList<>();
-         List<Integer> optionId1= new ArrayList<>();
+
 //         여기에 유저id ,userId 나 그런거 넣으면 optionid 를 리스트 형태로 반환함
-        // 지금은 예시용으로 1번 유저의 견적 정보 받음
-         optionIds= carService.getSelectOptionIdsById(1);
+        // 지금은 예시용으로 어떤 유저의 첫번쨰 견적 정보 받음
+        // 만약 2를 적으면 그 사람의 2번쨰 견적 차량의 optionIds 받는거고
+        //여기서 optionIds 는 네비, 폰충전, 등등 내부 옵션등을 말한다.
+        List<Integer> optionIds= carService.getSelectOptionIdsById(1);
 
         System.out.println(optionIds.get(1));
 
@@ -145,6 +148,7 @@ public class CarController {
         }
 
         List<CarOption> carOption =carService.getCarOptionById(optionIds);
+
         List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
         for(SelectOption selectOption : selectOptions){
             System.out.println(selectOption.getWholePrice());
@@ -154,10 +158,13 @@ public class CarController {
             System.out.println(carDetail1.getImgUrl());
         }
 
+        model.addAttribute("carOption", carOption);
+
 
         model.addAttribute("selectOption", selectOptions);
         model.addAttribute("carDetail", carDetail);
-        model.addAttribute("carOption", carOption);
+
+
 
         return "myPage";
 
@@ -176,8 +183,7 @@ public class CarController {
 
         List<Integer> colorIds = new ArrayList<>();
         List<Integer> optionIds = carService.getSelectOptionIdsById(selectOptionId);
-//         여기에 유저id ,userId 나 그런거 넣으면 optionid 를 리스트 형태로 반환함
-        // 지금은 예시용으로 1번 유저의 견적 정보 받음
+
 
 
 

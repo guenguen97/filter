@@ -40,8 +40,10 @@ public class SelectOption {
 
 
     @NonNull
-    private String imgUrl;
+    private String outImgUrl;
 
+    @NonNull
+    private String inImgUrl;
 
 
 
