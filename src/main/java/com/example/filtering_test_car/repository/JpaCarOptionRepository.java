@@ -19,4 +19,22 @@ public class JpaCarOptionRepository implements CarOptionRepository {
         return em.createQuery("select o from CarOption o", CarOption.class)
                 .getResultList();
     }
+
+//    @Override
+//    public List<CarOption> findByid(Integer optionIds){
+//
+//        return em.createQuery("select * from CarOption where SelectOption_optionId.id in :id ", CarOption.class)
+//                .setParameter("id", optionIds)
+//                .getResultList();
+//
+//    };
+
+//    @Override
+//    public List<Integer> getCarDetailByColorId(List<List<Integer>> id){
+//
+//        return em.createQuery("select * from CarOption where CarOption.id in :id ", CarOption.class)
+//                .setParameter("id", id)
+//                .getResultList();
+//
+//    };
 }

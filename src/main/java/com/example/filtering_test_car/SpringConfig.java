@@ -18,9 +18,11 @@ public class SpringConfig {
         this.em = em;
     }
 
+
+
     @Bean
     public CarService carService() {
-        return new CarService(carRepository(), optionRepository(), carDetailRepository(), carOptionRepository());
+        return new CarService(carRepository(), optionRepository(), carDetailRepository() ,carOptionRepository() ,selectOptionRepository());
     }
 
     @Bean
@@ -38,10 +40,19 @@ public class SpringConfig {
         return new JpaCarDetailRepository(em);
     }
 
+
     @Bean
     public CarOptionRepository carOptionRepository() {
         return new JpaCarOptionRepository(em);
     }
+
+
+    @Bean
+    public SelectOptionRepository selectOptionRepository() {
+        return new JpaSelectOptionRepository(em);
+    }
+
+
 
 
 }

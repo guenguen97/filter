@@ -40,13 +40,17 @@
         <form action="">
 <!--      견적 db 들어갈 공간 -->
         <div   style="" class="main-box2-body">
-            <div class="main-box2-body-container" th:each="selectOption : ${selectOption}" >
-<!--                <div  th:data-img-url="${carDetails.imgUrl}"></div>-->
+            <div class="main-box2-body-container" th:each="selectOption, s: ${selectOption}"  >
+                <div ><img class="option-car" src="" th:src="${carDetail[s.index].imgUrl}"></div>
                 <div class="main-box2-body-container-item1"> 싼타페</div>
                 <div class="main-box2-body-container-item2" th:text="${selectOption.wholePrice}+원" ></div>
                 <div class="main-box2-body-container-item3" th:text="${selectOption.createDate}" ></div>
                 <input class="main-box2-body-container-checkbox" type="checkbox">
+
             </div>
+
+
+
 
         </div>
         </form>
@@ -145,6 +149,12 @@
                 text-align:center;
         }
 
+
+        .option-car{
+                width:300px;
+                height:150px;
+
+        }
 
         .main-box2-title-item1 {
                 flex-grow:2.6;

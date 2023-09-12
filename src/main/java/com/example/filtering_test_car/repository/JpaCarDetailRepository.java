@@ -33,7 +33,7 @@ public class JpaCarDetailRepository implements CarDetailRepository {
     @Override
     public List<CarDetail> getCarDetailByColorId(List<Integer> id) {
         return em.createNativeQuery(
-                        "SELECT * FROM `carDetail` WHERE JSON_ARRAY_CONTAINS(:id, JSON_ARRAYAGG(id)) = 1",
+                        "SELECT * FROM CarDetail  WHERE CarDetail.id in :id",
                         CarDetail.class
                 )
                 .setParameter("id", id)

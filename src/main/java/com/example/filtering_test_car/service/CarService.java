@@ -7,9 +7,7 @@ import com.example.filtering_test_car.repository.CarDetailRepository;
 import com.example.filtering_test_car.repository.CarOptionRepository;
 import com.example.filtering_test_car.repository.CarRepository;
 import com.example.filtering_test_car.repository.OptionRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -20,6 +18,7 @@ public class CarService {
     private final OptionRepository optionRepository;
     private final CarDetailRepository carDetailRepository;
 
+
     private final CarOptionRepository carOptionRepository;
 
     @Autowired
@@ -28,6 +27,7 @@ public class CarService {
         this.carRepository = carRepository;
         this.carDetailRepository = carDetailRepository;
         this.carOptionRepository = carOptionRepository;
+
     }
 
     public List<Car> getCarsBySearch(List<String> size, String engine, Long displacement, Long distanceDriven, Long maxPrice) {
@@ -54,4 +54,15 @@ public class CarService {
         return carOptionRepository.findAll();
     }
 
+//    public List<CarOption> getCarOptionByOptionId(List<List<Integer>> optionIds) {
+//        return carOptionRepository.getCarDetailByColorId(optionIds);
+//    }
+
+//    public List<Integer> getCarOptionIdsById(Integer id) {
+//        return carOptionRepository.findById(id);
+//    }
+
+    public List<Integer> getSelectOptionIdsById(Integer i) {
+        return carOptionRepository.findById();
+    }
 }

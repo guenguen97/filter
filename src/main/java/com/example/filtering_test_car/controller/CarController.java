@@ -120,20 +120,40 @@ public class CarController {
         return "redirect:/";
     }
 
-    @GetMapping("/myPage") // Option 테스트용
+    @GetMapping("/myPage") //
     public String showMyPage(Model model) {
         List<SelectOption> selectOptions = selectOptionService.getList();
+//        System.out.println(selectOptions.get(1).getOptionId());
+
+
         List<Integer> colorIds = new ArrayList<>();
+        List<Integer> optionIds = new ArrayList<>();
+         List<Integer> optionId1= new ArrayList<>();
+         optionIds= carService.getSelectOptionIdsById(1);
+
+
+//        optionId1=carService.getCarOptionIdsById(1);
 
         for (SelectOption selectOption : selectOptions) {
             // Assuming getColorId() is the method to retrieve the colorId from SelectOption
             int colorId = selectOption.getOutColorId();
             colorIds.add(colorId);
         }
-//        List<CarDetail> carDetails =carService.getCarDetailByColorId(colorIds);
+//        for (SelectOption selectOption : selectOptions) {
+//            // Assuming getColorId() is the method to retrieve the colorId from SelectOption
+//           List<Integer> optionId = selectOption_optionid.getOptionId();
+//            System.out.println(optionId.get(2));
+//           optionIds.add(optionId);
+//        }
+//
+        List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
+//        List<CarOption> carOption=carService.getCarOptionByOptionId(optionIds);
 
+//        System.out.println(carDetail.get(0).getImgUrl());
+//        System.out.println(carOption.get(0).getImgUrl());
+//
         model.addAttribute("selectOption", selectOptions);
-//        model.addAttribute("carDetails", carDetails);
+        model.addAttribute("carDetail", carDetail);
 
 
         return "myPage";
