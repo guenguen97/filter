@@ -131,7 +131,7 @@ public class CarController {
          List<Integer> optionId1= new ArrayList<>();
          optionIds= carService.getSelectOptionIdsById(1);
 
-
+        System.out.println(optionIds.get(1));
 //        optionId1=carService.getCarOptionIdsById(1);
 
         for (SelectOption selectOption : selectOptions) {

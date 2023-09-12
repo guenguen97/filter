@@ -1,4 +1,7 @@
 package com.example.filtering_test_car.repository;
 
-public interface SelectOptionRepository2 {
+import com.example.filtering_test_car.domain.SelectOption;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SelectOptionRepository2 extends JpaRepository<SelectOption, Integer> {
 }

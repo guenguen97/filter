@@ -3,10 +3,7 @@ package com.example.filtering_test_car.service;
 
 import com.example.filtering_test_car.domain.*;
 
-import com.example.filtering_test_car.repository.CarDetailRepository;
-import com.example.filtering_test_car.repository.CarOptionRepository;
-import com.example.filtering_test_car.repository.CarRepository;
-import com.example.filtering_test_car.repository.OptionRepository;
+import com.example.filtering_test_car.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -18,15 +15,16 @@ public class CarService {
     private final OptionRepository optionRepository;
     private final CarDetailRepository carDetailRepository;
 
-
+    private final SelectOptionRepository selectOptionRepository;
     private final CarOptionRepository carOptionRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository, OptionRepository optionRepository, CarDetailRepository carDetailRepository, CarOptionRepository carOptionRepository) {
+    public CarService(CarRepository carRepository, OptionRepository optionRepository, CarDetailRepository carDetailRepository, CarOptionRepository carOptionRepository, SelectOptionRepository selectOptionRepository) {
         this.optionRepository = optionRepository;
         this.carRepository = carRepository;
         this.carDetailRepository = carDetailRepository;
         this.carOptionRepository = carOptionRepository;
+        this.selectOptionRepository =selectOptionRepository;
 
     }
 
@@ -63,6 +61,6 @@ public class CarService {
 //    }
 
     public List<Integer> getSelectOptionIdsById(Integer i) {
-        return carOptionRepository.findById();
+        return selectOptionRepository.findById(i);
     }
 }
