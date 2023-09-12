@@ -2,6 +2,7 @@ package com.example.filtering_test_car.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -36,6 +37,10 @@ public class SelectOption {
     private Integer wholePrice;
 
     private LocalDateTime createDate;
+
+
+    @NonNull
+    private String imgUrl;
 
 
 

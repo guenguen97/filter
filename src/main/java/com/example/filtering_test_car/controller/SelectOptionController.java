@@ -17,12 +17,12 @@ public class SelectOptionController {
     private final SelectOptionService selectOptionService;
 
     @PostMapping("/dd")
-    public String result(Model model, @Valid SelectOption selectOption , @RequestParam("optionId") String optionId ,
-                         SelectForm selectForm, @RequestParam("inColorId") String inColorId ,
-                         @RequestParam("outColorId") String outColorId ,@RequestParam("wholePrice") String wholePrice) {
+    public String result(Model model, @Valid SelectOption selectOption , @RequestParam("optionId") Integer optionId ,
+                         SelectForm selectForm, @RequestParam("inColorId") Integer inColorId ,
+                         @RequestParam("outColorId") Integer outColorId ,@RequestParam("wholePrice") Integer wholePrice,@RequestParam("imgUrl") String imgUrl) {
 
         selectOptionService.create(selectOption.getUserId(),selectOption.getInColorId(),
-                selectOption.getOptionId(),selectOption.getOutColorId(), selectOption.getWholePrice());
+                selectOption.getOptionId(),selectOption.getOutColorId(), selectOption.getWholePrice(),selectOption.getImgUrl());
         System.out.println("차 옵션 만드는거 1차 실행부분");
         System.out.println(selectOption.getOptionId());
         System.out.println(selectOption.getInColorId());

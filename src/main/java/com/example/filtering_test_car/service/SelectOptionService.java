@@ -19,7 +19,7 @@ public class SelectOptionService {
 
 
     public SelectOption create(Integer userId, Integer inColorId,List<Integer> optionId ,Integer outColorId,
-                                 Integer wholePrice   ) {
+                                 Integer wholePrice ,String imgUrl  ) {
         SelectOption user = new SelectOption();
 
         user.setUserId(userId);
@@ -28,6 +28,7 @@ public class SelectOptionService {
         user.setOptionId(optionId);
         user.setWholePrice(wholePrice);
         user.setCreateDate(LocalDateTime.now());
+        user.setImgUrl(imgUrl);
 
         return selectOptionRepository2.save(user);
     }

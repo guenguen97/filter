@@ -43,7 +43,7 @@
                 <div class="main-box2-body-container" th:each="selectOption, s: ${selectOption}"  >
                     <div ><img class="option-car" src="" th:src="${carDetail[s.index].imgUrl}"></div>
                     <div class="main-box2-body-container-item1"> 싼타페</div>
-                    <div th:each="carOption: ${carOption}"> <img style="width:150px height:150px" src="" th:src="${carOption.imgUrl}"> </div>
+                    <div th:each="carOption: ${carOption}"> <img style="width:150px; height:150px" src="" th:src="${carOption.imgUrl}"> </div>
                     <div class="main-box2-body-container-item2"> </div>
                     <div class="main-box2-body-container-item2" th:text="${selectOption.wholePrice}+원" ></div>
                     <div class="main-box2-body-container-item3" th:text="${selectOption.createDate}" ></div>
@@ -136,7 +136,7 @@
         .main-box2 {
         border:1px solid gray;
 
-         height: 400px;
+         max-height: 1400px;
         color:#515250;
 
 
@@ -175,7 +175,7 @@
         }
 
         .main-box2-body-container{
-        display :flex;
+
          justify-content : space-around;
            text-align:center;
             font-size:20px;
