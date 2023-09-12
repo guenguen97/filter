@@ -125,10 +125,11 @@ public class CarController {
         List<SelectOption> selectOptions = selectOptionService.getList();
 //        System.out.println(selectOptions.get(1).getOptionId());
 
-
+        System.out.println("마이 페이지 실행 시작");
         List<Integer> colorIds = new ArrayList<>();
         List<Integer> optionIds = new ArrayList<>();
          List<Integer> optionId1= new ArrayList<>();
+//         여기에 유저id 나 그런거 넣으면 optionid 를 리스트 형태로 반환함
          optionIds= carService.getSelectOptionIdsById(1);
 
         System.out.println(optionIds.get(1));

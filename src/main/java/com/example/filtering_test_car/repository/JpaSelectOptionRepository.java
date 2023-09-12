@@ -20,9 +20,7 @@ public class JpaSelectOptionRepository implements SelectOptionRepository {
     @Override
     public List<Integer> findById(Integer id) {
         return em.createNativeQuery(
-                        "SELECT * FROM selectOption_optionId WHERE SelectOption_option.id in :id",
-                        SelectOption.class
-                )
+                        "SELECT option_id FROM selectOption_optionId WHERE SelectOption_id = :id")
                 .setParameter("id", id)
                 .getResultList();
     }
