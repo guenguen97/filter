@@ -2,6 +2,7 @@ package com.example.filtering_test_car.service;
 
 
 import com.example.filtering_test_car.domain.SelectOption;
+import com.example.filtering_test_car.repository.CarOptionRepository;
 import com.example.filtering_test_car.repository.SelectOptionRepository;
 import com.example.filtering_test_car.repository.SelectOptionRepository2;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @Service
 public class SelectOptionService {
     private  final SelectOptionRepository2 selectOptionRepository2;
+    private  final SelectOptionRepository selectOptionRepository;
 
 
     public SelectOption create(Integer userId, Integer inColorId,List<Integer> optionId ,Integer outColorId,
@@ -35,4 +37,7 @@ public class SelectOptionService {
     }
 
 
+    public List<SelectOption> getListBySelectOptionId(Integer selectOptionId) {
+        return this.selectOptionRepository2.findBySelectOptionId(selectOptionId);
+    }
 }

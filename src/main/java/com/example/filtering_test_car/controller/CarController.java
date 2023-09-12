@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -157,7 +158,39 @@ public class CarController {
     }
 
     @GetMapping("myPageDetail/{selectOptionId}")
-    public String showMyPageDetail(Model model,Integer userId, Integer selectOptionId) {
+    public String showMyPageDetail(Model model, @PathVariable("selectOptionId") Integer selectOptionId) {
+        System.out.println("견적 상세페이지 실행됨");
+        System.out.println(selectOptionId);
+
+        List<SelectOption> selectOptions= selectOptionService.getListBySelectOptionId(selectOptionId);
+
+        System.out.println(selectOptions);
+        System.out.println(selectOptions.get(0).getWholePrice());
+
+
+        List<Integer> colorIds = new ArrayList<>();
+        List<Integer> optionIds = carService.getSelectOptionIdsById(selectOptionId);
+//         여기에 유저id ,userId 나 그런거 넣으면 optionid 를 리스트 형태로 반환함
+        // 지금은 예시용으로 1번 유저의 견적 정보 받음
+
+
+
+
+        for (SelectOption selectOption : selectOptions) {
+            // Assuming getColorId() is the method to retrieve the colorId from SelectOption
+            int colorId = selectOption.getOutColorId();
+            colorIds.add(colorId);
+        }
+
+        List<CarOption> carOption =carService.getCarOptionById(optionIds);
+        List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
+        System.out.println(carOption);
+        System.out.println(carOption.get(0).getName());
+        System.out.println(carOption.get(1).getName());
+
+        model.addAttribute("selectOption", selectOptions);
+        model.addAttribute("carDetail", carDetail);
+        model.addAttribute("carOption", carOption);
 
 
         return "myPageDetail";

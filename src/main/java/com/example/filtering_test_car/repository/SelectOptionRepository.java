@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface SelectOptionRepository {
 
-    List<Integer> findById(Integer i);
+    List<Integer> findOptionDetailById(Integer i);
 
+    List<SelectOption> findBySelectOptionId(Integer selectOptionId);
 }

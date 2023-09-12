@@ -65,6 +65,6 @@ public class CarService {
 //    }
 
     public List<Integer> getSelectOptionIdsById(Integer i) {
-        return selectOptionRepository.findById(i);
+        return selectOptionRepository.findOptionDetailById(i);
     }
 }
