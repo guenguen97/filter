@@ -3,9 +3,13 @@ package com.example.filtering_test_car.repository;
 import com.example.filtering_test_car.domain.CarDetail;
 import com.example.filtering_test_car.domain.SelectOption;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
 
 import java.util.List;
 
+
+@Transactional
 public class JpaSelectOptionRepository implements SelectOptionRepository {
 
 
@@ -17,6 +21,8 @@ public class JpaSelectOptionRepository implements SelectOptionRepository {
 
 
 
+
+
     @Override
     public List<Integer> findOptionDetailById(Integer id) {
         return em.createNativeQuery(
@@ -25,21 +31,7 @@ public class JpaSelectOptionRepository implements SelectOptionRepository {
                 .getResultList();
     }
 
-    @Override
-    public List<SelectOption> findBySelectOptionId(Integer id) {
-        return em.createNativeQuery(
-                        "SELECT * FROM selectOption WHERE id = :id")
-                .setParameter("id", id)
-                .getResultList();
-    }
 
-    @Override
-    public List<SelectOption> getLastSelectOption() {
-        return em.createNativeQuery(
-                        "SELECT * FROM selectOption ORDER BY id DESC LIMIT 1")
-
-                .getResultList();
-    }
 
 
 

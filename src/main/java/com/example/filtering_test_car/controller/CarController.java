@@ -9,10 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,7 +136,7 @@ public class CarController {
         //여기서 optionIds 는 네비, 폰충전, 등등 내부 옵션등을 말한다.
         List<Integer> optionIds= carService.getSelectOptionIdsById(1);
 
-        System.out.println(optionIds.get(1));
+
 
         for (SelectOption selectOption : selectOptions) {
             // Assuming getColorId() is the method to retrieve the colorId from SelectOption
@@ -148,6 +145,8 @@ public class CarController {
         }
 
         List<CarOption> carOption =carService.getCarOptionById(optionIds);
+
+
 
         List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
         for(SelectOption selectOption : selectOptions){
@@ -209,6 +208,16 @@ public class CarController {
     }
 
 
+    @PostMapping("/doDelete")
+    public String result(Model model, @RequestParam("id") List<Integer> id) {
+        System.out.println("삭제 기능 시작");
+        System.out.println(id.get(0));
+
+        carService.delete(id);
+
+
+        return "redirect:/myPage";
+    }
 
 
 }

@@ -2,8 +2,6 @@ package com.example.filtering_test_car.service;
 
 
 import com.example.filtering_test_car.domain.SelectOption;
-import com.example.filtering_test_car.repository.CarOptionRepository;
-import com.example.filtering_test_car.repository.SelectOptionRepository;
 import com.example.filtering_test_car.repository.SelectOptionRepository2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +13,7 @@ import java.util.List;
 @Service
 public class SelectOptionService {
     private  final SelectOptionRepository2 selectOptionRepository2;
-    private  final SelectOptionRepository selectOptionRepository;
+//    private  final SelectOptionRepository selectOptionRepository;
 
     public List<SelectOption> getLastSelectOption() {
         return this.selectOptionRepository2.getLastSelectOption();
@@ -42,6 +40,8 @@ public class SelectOptionService {
     public List<SelectOption> getList() {
         return this.selectOptionRepository2.findAll();
     }
+
+
 
 
     public List<SelectOption> getListBySelectOptionId(Integer selectOptionId) {

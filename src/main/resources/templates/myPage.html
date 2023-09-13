@@ -23,11 +23,11 @@
     <div class="top-bar-container">
     </div>
 </div>
-
+<form action="doDelete" method="post">
 <div class="main-section">
     <div class="main-box1">
         <div style="margin-left : 20px"><input class="allCheckBox" type="checkBox">전체 선택</input>   </div>
-        <div  style=" margin-right:20px; "><button class = "delButton">삭제</button></div>
+        <div  style=" margin-right:20px; "><button   type="submit" class = "delButton">삭제</button></div>
     </div>
     <div class="main-box2">
        <div class="main-box2-title">
@@ -37,16 +37,19 @@
        </div>
 
 <!--삭제 폼 넣기-->
-        <form action="">
+
 <!--      견적 db 들어갈 공간 -->
         <div   style="" class="main-box2-body">
             <div class="main-box2-body-container" th:each="selectOption, s : ${selectOption}">
-                <a th:href="@{|/myPageDetail/${selectOption.id}|}"><div><img class="option-car" src="" th:src="${selectOption.outImgUrl}"></div></a>
-                <div class="main-box2-body-container-item1"> 싼타페</div>
-                <div class="main-box2-body-container-item2"> </div>
+
+                <div class="main-box2-body-container-item1">
+                    <a th:href="@{|/myPageDetail/${selectOption.id}|}">
+                        <div><img class="option-car" src="" th:src="${selectOption.outImgUrl}"></div>
+                    </a>
+                </div>
                 <div class="main-box2-body-container-item2" th:text="${selectOption.wholePrice}" ></div>
                 <div class="main-box2-body-container-item3" th:text="${selectOption.createDate}" ></div>
-                <input class="main-box2-body-container-checkbox" type="checkbox">
+                <input class="main-box2-body-container-checkbox" name="id" th:value="${selectOption.id}" type="checkbox">
             </div>
         </div>
         </form>
@@ -146,11 +149,6 @@
         }
 
 
-        .option-car{
-                width:200px;
-                height:150px;
-
-        }
 
         .main-box2-title-item1 {
                 flex-grow:2.6;
@@ -175,12 +173,22 @@
             font-size:20px;
             margin : 20px 0;
             max-height:1500px;
+            line-height:150px;
+            border:1px solid gray;
+            height:150px;
+
 
 
         }
 
+          .option-car{
+                width:200px;
+                height:150px;
+
+        }
+
         .main-box2-body-container-item1 {
-          flex-grow:2.8;
+          flex-grow:2.5;
           flex-basis=0;
         }
 
@@ -207,3 +215,22 @@
         font-size:25px;
         }
 </style>
+
+<script>
+    var allCheckBox = $(".allCheckBox");
+
+
+    allCheckBox.click(function(){
+    if (allCheckBox.prop("checked")) {
+       console.log("체크박스 체크 상태");
+           $(".main-box2-body-container-checkbox").prop("checked",true);
+
+
+    }
+    else {
+    console.log("체크박스 해제 상태 ");
+    $(".main-box2-body-container-checkbox").prop("checked",false);
+    }
+});
+
+</script>

@@ -67,4 +67,15 @@ public class CarService {
     public List<Integer> getSelectOptionIdsById(Integer i) {
         return selectOptionRepository.findOptionDetailById(i);
     }
+
+    public void delete(List<Integer> id) {
+        this.carOptionRepository.doDelete(id);
+        this.carOptionRepository.doDelete2(id);
+
+
+    }
+    public void delete2(List<Integer> id) {
+
+
+    }
 }

@@ -9,6 +9,13 @@ public interface CarOptionRepository {
 
     List<CarOption> findById(List<Integer> id);
 
+
+    void doDelete(List<Integer> id);
+
+    void doDelete2(List<Integer> id);
+
+
+
 //    List<CarOption> findById();
 
 }
