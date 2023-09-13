@@ -40,4 +40,14 @@ public class JpaCarDetailRepository implements CarDetailRepository {
                 .getResultList();
     }
 
+    @Override
+    public List<CarDetail2> getCarDetail2ByColorId(List<Integer> id) {
+        return em.createNativeQuery(
+                        "SELECT * FROM CarDetail2  WHERE CarDetail2.id in :id",
+                        CarDetail2.class
+                )
+                .setParameter("id", id)
+                .getResultList();
+    }
+
 }

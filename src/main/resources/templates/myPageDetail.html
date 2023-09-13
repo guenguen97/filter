@@ -68,9 +68,9 @@
                         <div >외장 색상</div>
                         <div > <img  class="btnUrl1 btnUrl" th:src="${carDetail.btnUrl}" alt=""></div>
                         </div>
-                        <div>
-                        <div>내장 색상</div>
-                            <div ><img  class="btnUrl2 btnUrl" src="" alt=""></div>
+                        <div th:each="carDetail2 : ${carDetail2}">
+                        <div >내장 색상</div>
+                            <div ><img  class="btnUrl2 btnUrl" th:src="${carDetail2.btnUrl}" alt=""></div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div class="select-option-item2 item2">
                     <div>옵션</div>
                     <div>
-                    <div  th:each="carOption:${carOption}">
+                    <div class="select-option-thing" th:each="carOption:${carOption}">
                         <div><img class="carOptionImg" th:src="${carOption.imgUrl}" alt=""></div>
                         <div th:text="${carOption.name}">옵션각각 이름</div>
                         <div th:text="${carOption.price}"></div>
@@ -223,5 +223,9 @@
 
     .carOptionImg {
       width:150px; height:80px;
+    }
+
+    .select-option-thing {
+        display:flex;
     }
 </style>

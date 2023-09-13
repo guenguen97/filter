@@ -195,12 +195,15 @@ public class CarController {
 
         List<CarOption> carOption =carService.getCarOptionById(optionIds);
         List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
+        List<CarDetail2> carDetail2 =carService.getCarDetail2ByColorId(colorIds);
         System.out.println(carOption);
 
-
+        System.out.println(carDetail2.get(0).getBtnUrl());
 
         model.addAttribute("selectOption", selectOptions);
         model.addAttribute("carDetail", carDetail);
+        model.addAttribute("carDetail2", carDetail2);
+
         model.addAttribute("carOption", carOption);
 
 
