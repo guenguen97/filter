@@ -6,7 +6,9 @@ import com.example.filtering_test_car.repository.SelectOptionRepository2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -23,13 +25,16 @@ public class SelectOptionService {
     public SelectOption create(Integer userId, Integer inColorId,List<Integer> optionId ,Integer outColorId,
                                  Integer wholePrice ,String outImgUrl, String inImgUrl  ) {
         SelectOption user = new SelectOption();
+        String dateFormat = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+
 
         user.setUserId(userId);
         user.setInColorId(inColorId);
         user.setOutColorId(outColorId);
         user.setOptionId(optionId);
         user.setWholePrice(wholePrice);
-        user.setCreateDate(LocalDateTime.now());
+
+        user.setCreateDate(dateFormat);
         user.setOutImgUrl(outImgUrl);
         user.setInImgUrl(inImgUrl);
 

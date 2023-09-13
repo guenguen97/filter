@@ -196,8 +196,8 @@ public class CarController {
         List<CarOption> carOption =carService.getCarOptionById(optionIds);
         List<CarDetail> carDetail =carService.getCarDetailByColorId(colorIds);
         System.out.println(carOption);
-        System.out.println(carOption.get(0).getName());
-        System.out.println(carOption.get(1).getName());
+
+
 
         model.addAttribute("selectOption", selectOptions);
         model.addAttribute("carDetail", carDetail);

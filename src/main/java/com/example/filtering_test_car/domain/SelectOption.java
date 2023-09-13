@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,7 +38,9 @@ public class SelectOption {
     @Column()  //옵션 가격
     private Integer wholePrice;
 
-    private LocalDateTime createDate;
+    @CreatedDate
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String createDate;
 
 
     @NonNull
