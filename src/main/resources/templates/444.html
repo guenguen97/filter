@@ -135,17 +135,17 @@
             <div id="content1" >
                 <div class="bgImg">
 <!--            서버에 outImgUrl 보내주기 위한 장치      -->
-                    <input class="dbGoOutImg"type="text" style="display:none;" name="outImgUrl" value="">
+                    <input class="dbGoOutImg" type="text" style="display:none;" name="outImgUrl" value="https://www.hyundai.com/contents/vr360/MX03/exterior/WW2/001.png">
                     <img class="carImg cc" src="https://www.hyundai.com/contents/vr360/MX03/exterior/WW2/001.png" alt="">
                 </div>
 
                 <div class="colorListContainer" style="margin-top: 10px; overflow: hidden;" >
                     <div class="colorList">
-                        <div class="colorDiv dd" th:each="carDetail : ${carDetails}" onclick="doClick(this)" th:data-img-url="${carDetail.imgUrl}">
+                        <div class="colorDiv dd" th:each="carDetail, iterStat  : ${carDetails}" onclick="doClick(this)" th:data-img-url="${carDetail.imgUrl}">
                             <div class="colorItem"
                                  th:data-img-url="${carDetail.imgUrl}"
                                  th:style="'background-image: url(\'' + ${carDetail.btnUrl} + '\')'">
-                                <input type="checkbox" name="outColorId" th:value="${carDetail.id}" style="display: none;">
+                                <input class="colorCheckbox" th:checked="${iterStat.index == 0}" type="checkbox" name="outColorId" th:value="${carDetail.id}" style="display: none;" >
                             </div>
                             <div class="colorItem2" th:text="${carDetail.name}" style="text-align: center;"  ></div>
                         </div>
@@ -157,18 +157,18 @@
             <div id="content2" >
                 <div class="bgImg">
 <!--                   inImgUrl를 보내주기 위해있는 장치-->
-                    <input class="dbGoInImg"type="text" style="display:none;" name="inImgUrl" value="">
+                    <input class="dbGoInImg"type="text" style="display:none;" name="inImgUrl" value="https://www.hyundai.com/contents/vr360/MX03/interior/3NB/img-interior.png">
 
                     <img class="carImg ccc" src="https://www.hyundai.com/contents/vr360/MX03/interior/3NB/img-interior.png" alt="">
                 </div>
 
                 <div class="colorListContainer" style="margin-top: 10px; overflow: hidden;" >
                     <div class="colorList">
-                        <div class="colorDiv ddd" th:each="carDetail2 : ${carDetails2}" onclick="doClick2(this)" th:data-img-url="${carDetail2.imgUrl}">
+                        <div class="colorDiv ddd" th:each="carDetail2, iterStat  : ${carDetails2}" onclick="doClick2(this)" th:data-img-url="${carDetail2.imgUrl}">
                             <div class="colorItem3"
                                  th:data-img-url="${carDetail2.imgUrl}"
                                  th:style="'background-image: url(\'' + ${carDetail2.btnUrl} + '\')'">
-                                <input type="checkbox" name="inColorId" th:value="${carDetail2.id}" style="display: none; ">
+                                <input class="colorCheckbox" th:checked="${iterStat.index == 0}" type="checkbox" name="inColorId" th:value="${carDetail2.id}"  style="display: none; " >
 
                             </div>
                             <div class="colorItem2" th:text="${carDetail2.name}" style="text-align: center;"  ></div>

@@ -1,5 +1,6 @@
 package com.example.filtering_test_car.domain;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
@@ -26,6 +27,7 @@ public class SelectOption {
 
     @ElementCollection
     @Column(name = "option_id")
+    @Nullable
     private List<Integer> optionId;
 
     @Column()
