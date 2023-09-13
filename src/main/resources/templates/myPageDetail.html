@@ -26,11 +26,11 @@
 <h1>견적 상세 페이지</h1>
 
 <div class="car-section">
-    <div class="car-container">
+    <div class="car-container " th:each="selectOption, s : ${selectOption}">
         <div><h1>나의 디올 뉴 산타페가 완성 되었습니다.</h1></div>
         <div><h3>디 올 뉴 싼타페 가솔린 2.5T 2WD 오토 프레스티지  5인승</h3></div>
 <!--        차량 사진 db-->
-        <div class="car-img"><img src="" alt=""></div>
+        <div class="car-img"><img th:src="${selectOption.outImgUrl}" alt=""></div>
         <div><span> * 상기 이미지는 내/외장 색상 선택을 돕기 위한 참고용으로 제공되고 있습니다.</span></div>
         <div><button></button></div>
     </div>
@@ -38,7 +38,7 @@
 
     <div class="select-section">
         <div class="select-container">
-            <div style="border-bottom:1px solid black"><span>차량 선택 사항</span></div>
+            <div style="border-bottom:1px solid black; margin-bottom:30px;"><div style=" margin-bottom:30px; font-weight:bold; font-size:20px;">차량 선택 사항</div></div>
             <div class="select-model-box box">
                 <div class="select-model-item1 item1">
                     <div>모델</div>
@@ -56,16 +56,22 @@
             </div>
             <div class="select-color-box box">
                 <div>
-                    <div class="select-model-item1 item1">
+                    <div class="select-color-item1 item1">
                         <div>색상</div>
                         <div>추가 금액 없음</div>
                     </div>
                 </div>
                 <div>
-                    <div class="select-model-item2 item2">
+                    <div class="select-color-item2 item2">
 <!--                       색상 반복구문 -->
-                        <div>외장 색상</div>
+                        <div th:each="carDetail : ${carDetail}">
+                        <div >외장 색상</div>
+                        <div > <img  class="btnUrl1 btnUrl" th:src="${carDetail.btnUrl}" alt=""></div>
+                        </div>
+                        <div>
                         <div>내장 색상</div>
+                            <div ><img  class="btnUrl2 btnUrl" src="" alt=""></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,9 +84,11 @@
                 <div class="select-option-item2 item2">
                     <div>옵션</div>
                     <div>
-                        <div><img src="" alt=""></div>
-                        <div>옵션각각 이름</div>
-                        <div>옵션 각각 가격</div>
+                    <div  th:each="carOption:${carOption}">
+                        <div><img class="carOptionImg" th:src="${carOption.imgUrl}" alt=""></div>
+                        <div th:text="${carOption.name}">옵션각각 이름</div>
+                        <div th:text="${carOption.price}"></div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -122,7 +130,7 @@
         margin-left:auto;
         margin-right:auto;
         width:1120px;
-        height:600px;
+        height:800px;
         display:flex;
         flex-direction: column;
         justify-content: center; /* 세로 방향으로 가운데 정렬 */
@@ -136,8 +144,8 @@
         margin-right:auto;
         width:1120px;
 
+        max-height:3500px;
         height:1500px;
-
     }
 
     .box {
@@ -157,6 +165,7 @@
 
     .select-option-box {
     display:flex;
+    max-height:1000px;
     }
 
     .item1 {
@@ -169,5 +178,50 @@
     width:764px;
     height:135px;
     border:1px solid green;
+    }
+   .btnUrl {
+            width:85px; height: 85px;
+
+   }
+
+
+
+    .item1 >div:first-child {
+     margin-bottom:30px;
+     font-size:20px;
+     font-weight:bold;
+    }
+
+
+    .select-model-item2 >div:first-child{
+            font-weight:bold;
+            margin:20px 0 ;
+    }
+
+     .select-model-item2 >div:nth-child(2){
+            display: flex;
+
+    }
+    .select-model-item2 >div:nth-child(2) >div {
+            margin-right:100px;
+    }
+
+     .select-color-item2 {
+    display:flex;
+
+
+    }
+
+    .select-option-item2 {
+        display:flex;
+
+    }
+
+    .select-option-item2>div:nth-child(2){
+
+    }
+
+    .carOptionImg {
+      width:150px; height:80px;
     }
 </style>
