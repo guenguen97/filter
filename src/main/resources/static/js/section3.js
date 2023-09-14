@@ -1,4 +1,4 @@
-     $(document).ready(function() {
+                    $(document).ready(function() {
 
                     const externalButton = document.getElementById('externalButton');
                     selectButton(externalButton);
@@ -162,3 +162,24 @@
                     });
                 }
             }
+
+//
+//            document.addEventListener('DOMContentLoaded', function() {
+//                // 첫 번째 input 요소를 선택합니다. 여기서는 name 속성이 "outColorId"인 첫 번째 요소를 선택합니다.
+//                const firstInput = document.querySelector('input[name="inColorId"]:first-of-type');
+//
+//                // 첫 번째 input 요소를 클릭 이벤트를 발생시킵니다.
+//                if (firstInput) {
+//                    doClick2(firstInput);
+//                }
+//            });
+//
+//            document.addEventListener('DOMContentLoaded', function() {
+//                // 첫 번째 input 요소를 선택합니다. 여기서는 name 속성이 "outColorId"인 첫 번째 요소를 선택합니다.
+//                const firstInput2 = document.querySelector('input[name="outColorId"]:first-of-type');
+//
+//                // 첫 번째 input 요소를 클릭 이벤트를 발생시킵니다.
+//                if (firstInput2) {
+//                    doClick(firstInput2);
+//                }
+//            });
