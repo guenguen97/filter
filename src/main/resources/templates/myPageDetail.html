@@ -42,7 +42,7 @@
             <div class="select-model-box box">
                 <div class="select-model-item1 item1">
                     <div>모델</div>
-                    <div>37,940,000원</div>
+                    <div>35460000</div>
                 </div>
                 <div class="select-model-item2 item2">
                     <div>디 올 뉴 싼타페 가솔린 2.5T 2WD 오토 프레스티지 5인승
@@ -64,26 +64,28 @@
                 <div>
                     <div class="select-color-item2 item2">
 <!--                       색상 반복구문 -->
-                        <div th:each="carDetail : ${carDetail}">
-                        <div >외장 색상</div>
-                        <div > <img  class="btnUrl1 btnUrl" th:src="${carDetail.btnUrl}" alt=""></div>
+                        <div class="select-color-carDetail  carDetail" th:each="carDetail : ${carDetail}">
+                            <div >외장 색상</div>
+                             <div > <img  class="btnUrl1 btnUrl" th:src="${carDetail.btnUrl}" alt=""></div>
+                            <div th:text="${carDetail.name}"></div>
                         </div>
-                        <div th:each="carDetail2 : ${carDetail2}">
-                        <div >내장 색상</div>
+                        <div  class="select-color-carDetail2  carDetail" th:each="carDetail2 : ${carDetail2}">
+                            <div >내장 색상</div>
                             <div ><img  class="btnUrl2 btnUrl" th:src="${carDetail2.btnUrl}" alt=""></div>
+                            <div th:text="${carDetail2.name}"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="select-option-box box">
-                <div class="select-option-item1 item1">
+                <div class="select-option-item1 item1" th:each="selectOption : ${selectOption}">
                     <div>옵션</div>
 <!--                    가격 db , 사진  이름, 가각ㄱ 가격-->
-                    <div>옵션 총 가격 ~~~원</div>
+                    <div th:text="${selectOption.wholePrice}"></div>
                 </div>
                 <div class="select-option-item2 item2">
-                    <div>옵션</div>
-                    <div>
+                    <div><span>옵션</span></div>
+                    <div class="option-db">
                     <div class="select-option-thing" th:each="carOption:${carOption}">
                         <div><img class="carOptionImg" th:src="${carOption.imgUrl}" alt=""></div>
                         <div th:text="${carOption.name}">옵션각각 이름</div>
@@ -92,10 +94,40 @@
                     </div>
                 </div>
             </div>
-
-            <div>총 차량 가격</div>
         </div>
     </div>
+
+
+
+            <div class="whole-carPrice-section" th:each="selectOption: ${selectOption}">
+                <div class="whole-carPrice-container">
+                    <div>
+                        <div>차량 총 견적 금액</div>
+                        <div th:text="${selectOption.wholePrice}"></div>
+                    </div>
+                    <div>
+                        <div>견적 기준일</div>
+                        <div th:text="${selectOption.createDate}"> </div>
+                    </div>
+                    <div>
+                        <div>견적번호</div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div>판매코드</div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <button>이메일 발송</button>
+                        <button>공유하기</button>
+                        <button>저장하기</button>
+                        <button>pdf 저장</button>
+
+                    </div>
+
+                </div>
+            </div>
+
 
 
 
@@ -138,6 +170,10 @@
 
 
     }
+.select-section {
+        height:auto;
+}
+
 
      .select-container{
         margin-left:auto;
@@ -145,7 +181,7 @@
         width:1120px;
 
         max-height:3500px;
-        height:1500px;
+
     }
 
     .box {
@@ -165,7 +201,8 @@
 
     .select-option-box {
     display:flex;
-    max-height:1000px;
+
+
     }
 
     .item1 {
@@ -206,18 +243,50 @@
             margin-right:100px;
     }
 
+    .carDetail {
+     display:flex;
+    }
+
+    .carDetail>div{
+        margin-right:30px;
+    }
+
+
      .select-color-item2 {
     display:flex;
+    width:1200px;
 
 
     }
+     .select-color-item2 >div {
+    margin-right:40px;
+
+
+    }
+
+
+    .select-option-item1 {
+        margin-bottom:auto;
+    }
+
 
     .select-option-item2 {
         display:flex;
+        height:auto;
+        line-height:80px;
+        width:780px;
+
 
     }
 
-    .select-option-item2>div:nth-child(2){
+    .select-option-item2>div:nth-child(1){
+        line-height:20px;
+
+        padding-right:30px;
+    }
+
+
+    .select-option-item2>div:nth-child(2)>div{
 
     }
 
@@ -226,6 +295,54 @@
     }
 
     .select-option-thing {
+        margin-left:auto;
+        display:flex;
+        width:710px;
+    }
+
+    .select-option-thing>div:nth-child(1){
+    margin-right:30px;
+
+    }
+
+    .select-option-thing>div:nth-child(3){
+    margin-left:auto;
+
+    }
+
+
+    .whole-carPrice-section {
+            background-color:#f6f3f2;
+            width:100%;
+    }
+
+    .whole-carPrice-container {
+        width:1120px;
+        height:360px;
+        margin-left:auto;
+        margin-right: auto;
+        font-size:20px;
+
+
+
+    }
+    .whole-carPrice-container>div{
         display:flex;
     }
+
+    .whole-carPrice-container>div:nth-child(1) {
+                height:77px;
+        }
+
+    .whole-carPrice-container>div:nth-child(2) {
+                height:77px;
+        }
+
+    .whole-carPrice-container>div:nth-child(3) {
+                height:45px;
+        }
+
+    .whole-carPrice-container>div:nth-child(4) {
+                height:45px;
+        }
 </style>
